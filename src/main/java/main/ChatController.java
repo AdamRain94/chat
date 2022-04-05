@@ -10,6 +10,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,6 +38,7 @@ public class ChatController {
         users.setSessionId(RequestContextHolder.currentRequestAttributes().getSessionId());
         users.setName(nik);
         users.setOnline(true);
+        users.setTimeOnline(new Date().getTime());
         users.setColor(Color.getColor());
         userRepository.save(users);
     }
@@ -59,6 +61,17 @@ public class ChatController {
         return listUsers;
     }
 
+    @GetMapping("/usersOnline")
+    public List<Users> getUsersOnline() {
+        List<Users> listUsersOnline = new ArrayList<>();
+        userRepository.findAll().forEach(users -> {
+            if (users.isOnline()) {
+                listUsersOnline.add(users);
+            }
+        });
+        return listUsersOnline;
+    }
+
     @GetMapping("/getMessage")
     public List<Message> getMessage() {
         List<Message> listMessage = new ArrayList<>();
@@ -66,22 +79,17 @@ public class ChatController {
         return listMessage;
     }
 
-    @GetMapping("/getCountMessage")
-    public int getCountMessage() {
-        return (int) messageRepository.count();
-    }
-
     @GetMapping("/setOnline")
-    public void setOnline(){
+    public void setOnline() {
         String sessionId = RequestContextHolder.currentRequestAttributes().getSessionId();
         Users users = userRepository.findBySessionId(sessionId).get();
+        users.setTimeOnline(new Date().getTime());
         users.setOnline(true);
         userRepository.save(users);
     }
 
-    @GetMapping("/setOffline")
-    public void setOffline(){
-        String sessionId = RequestContextHolder.currentRequestAttributes().getSessionId();
+    @PostMapping("/setOffline")
+    public void setOffline(@RequestParam String sessionId) {
         Users users = userRepository.findBySessionId(sessionId).get();
         users.setOnline(false);
         userRepository.save(users);
@@ -90,5 +98,10 @@ public class ChatController {
     @GetMapping("/getCountOnline")
     public int getCountOnline() {
         return (int) userRepository.countByOnline(true);
+    }
+
+    @GetMapping("/getCountMessage")
+    public int getCountMessage() {
+        return (int) messageRepository.count();
     }
 }

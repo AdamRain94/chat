@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Date;
 
 @Entity
 public class Users {
@@ -19,6 +20,16 @@ public class Users {
     private String sessionId;
 
     private boolean online;
+
+    private long timeOnline;
+
+    public long getTimeOnline() {
+        return timeOnline;
+    }
+
+    public void setTimeOnline(long timeOnline) {
+        this.timeOnline = timeOnline;
+    }
 
     public boolean isOnline() {
         return online;
