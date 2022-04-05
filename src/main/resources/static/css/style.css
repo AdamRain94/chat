@@ -1,0 +1,215 @@
+html {
+    box-sizing: border-box;
+    height: 100%;
+    background-image: url("../img/fon.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+}
+
+img {
+    max-width: 100%;
+}
+
+body {
+    min-width: 1200px;
+    height: 100%;
+    font-family: 'font', sans-serif;
+}
+
+.container {
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.flex {
+    display: flex;
+}
+
+.windows {
+    margin: auto auto;
+    flex-direction: column;
+    width: 1200px;
+    height: 680px;
+    padding: 20px;
+    border-radius: 15px;
+    background-image: none;
+    color: white;
+    text-shadow: 10px 0 10px #000, 0 10px 10px #000, -10px 0 10px #000, 0 -10px 10px #000;
+}
+
+.windows-messages,
+.windows-users,
+.windows-input {
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    overflow-y: scroll;
+    border: 1px solid black;
+
+}
+
+.windows-messages,
+.windows-users,
+.windows-input,
+.btn,
+.input-name{
+    box-shadow: 15px 0 15px #2F4F4F, 0 15px 15px #2F4F4F, -15px 0 15px #2F4F4F, 0 -15px 15px #2F4F4F;
+}
+
+.windows-messages::-webkit-scrollbar,
+.windows-users::-webkit-scrollbar,
+.windows-input::-webkit-scrollbar {
+     display: none;
+}
+
+.windows-messages {
+    word-wrap: break-word;
+    width: 910px;
+    margin-right: 15px;
+    background-image: url("../img/fon-chat.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.windows-users {
+    width: 235px;
+    background-color: black;
+}
+
+.windows-input {
+    margin: 0;
+    resize: none;
+    width: 910px;
+    margin-right: 15px;
+    color: white;
+    background-color: black;
+}
+
+.top {
+    height: 560px;
+    margin-bottom: 15px;
+}
+
+.bottom {
+    height: 65px;
+}
+
+.btn {
+    margin: 0;
+    width: 235px;
+    text-align: center;
+    font-size: 2em;
+    font-weight: 900;
+    color: #8FBC8F;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: black;
+}
+
+p {
+    margin: 0;
+}
+
+.user-name {
+    flex-direction: row;
+    align-items: center;
+}
+
+.message-text {
+    margin-left: 20px;
+}
+
+.user {
+    flex-direction: column;
+}
+
+.message {
+    margin-bottom: 5px;
+}
+
+.users-name {
+    margin-bottom: 2px;
+    font-size: 1em;
+    letter-spacing: 0.1em;
+}
+
+.name {
+    margin: 0;
+    margin-right: 5px;
+    font-size: 1.1em;
+    letter-spacing: 0.05em;
+}
+.time {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+.reg {
+    margin: auto auto;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    width: 1200px;
+    height: 680px;
+    padding: 20px;
+    border-radius: 15px;
+    background-image: none;
+}
+
+.welcome {
+    margin: 0;
+    padding-bottom: 0.5em;
+    font-size: 4em;
+    font-weight: 900;
+    color: white;
+    text-shadow: 3px 0 3px #000, 0 3px 3px #000, -3px 0 3px #000, 0 -3px 3px #000;
+}
+
+.nik-name {
+    margin: 0;
+    padding-bottom: 0.5em;
+    font-size: 2em;
+    font-weight: 900;
+    color: white;
+    text-shadow: 2px 0 2px #000, 0 2px 2px #000, -2px 0 2px #000, 0 -2px 2px #000;
+}
+
+.input-name {
+    margin: 0 auto;
+    margin-bottom: 0.5em;
+    padding: 0;
+    padding-top: 7px;
+    text-align: center;
+    width: 680px;
+    height: 1.5em;
+    font-size: 3em;
+    font-weight: 900;
+    color: black;
+    text-shadow: 1px 0 1px #999, 0 1px 1px #999, -1px 0 1px #999, 0 -1px 1px #999;
+    white-space: nowrap;
+    overflow: hidden;
+    resize: none;
+}
+
+.entry{
+    margin: 0 auto;
+    width: 180px;
+    height: 1.5em;
+    text-align: center;
+    font-size: 2em;
+    font-weight: 900;
+    color: white;
+    background-color: black;
+    text-shadow: 2px 0 2px #000, 0 2px 2px #000, -2px 0 2px #000, 0 -2px 2px #000;
+}
