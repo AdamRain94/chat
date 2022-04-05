@@ -41,7 +41,7 @@ body {
     height: 90%;
     background-image: none;
     color: white;
-    text-shadow: 10px 0 10px #000, 0 10px 10px #000, -10px 0 10px #000, 0 -10px 10px #000;
+    text-shadow: 1vw 0 1vw #000, 0 1vw 1vw #000, -1vw 0 1vw #000, 0 -1vw 1vw #000;
 }
 
 .windows-messages,
