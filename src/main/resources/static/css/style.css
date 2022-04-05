@@ -16,15 +16,13 @@ html {
 
 body {
     margin: 0 auto;
-    width: 90%;
-    max-width: 1200px;
+    width: 90vw;
     height: 100%;
     font-family: 'font', sans-serif;
 }
 
 .container {
-    width: 100%;
-    max-width: 1200px;
+    width: 90vw;
     height: 100%;
     margin: auto auto;
     justify-content: center;
@@ -64,7 +62,7 @@ body {
 .windows-input,
 .btn,
 .input-name{
-    box-shadow: 15px 0 15px #2F4F4F, 0 15px 15px #2F4F4F, -15px 0 15px #2F4F4F, 0 -15px 15px #2F4F4F;
+    box-shadow: 1.5vw 0 1.5vw #2F4F4F, 0 1.5vw 1.5vw #2F4F4F, -1.5vw 0 1.5vw #2F4F4F, 0 -1.5vw 1.5vw #2F4F4F;
 }
 
 .windows-messages::-webkit-scrollbar,
@@ -172,9 +170,7 @@ p {
     flex-direction: column;
     text-align: center;
     justify-content: center;
-    max-width: 1200px;
-    width: 100%;
-    max-height: 680px;
+    width: 100vw;
     height: 100%;
     padding: 20px;
     background-image: none;
@@ -183,35 +179,34 @@ p {
 .welcome {
     margin: 0;
     padding-bottom: 3%;
-    font-size: 400%;
+    font-size: 4vw;
     font-weight: 900;
     color: white;
-    text-shadow: 3px 0 3px #000, 0 3px 3px #000, -3px 0 3px #000, 0 -3px 3px #000;
+    text-shadow: 0.3vw 0 0.3vw #000, 0 0.3vw 0.3vw #000, -0.3vw 0 0.3vw #000, 0 -0.3vw 0.3vw #000;
 }
 
 .nik-name {
     margin: 0;
-    padding-bottom: 2%;
-    font-size: 200%;
+    padding-bottom: 1.5vw;
+    font-size: 2.5vw;
     font-weight: 900;
     color: white;
-    text-shadow: 2px 0 2px #000, 0 2px 2px #000, -2px 0 2px #000, 0 -2px 2px #000;
+    text-shadow: 0.3vw 0 0.3vw #000, 0 0.3vw 0.3vw #000, -0.3vw 0 0.3vw #000, 0 -0.3vw 0.3vw #000;
 }
 
 .input-name {
     margin: 0 auto;
-    margin-bottom: 2%;
+    margin-bottom: 1vw;
     padding: 0;
-    padding-top: 1%;
+    padding-top: 0.7vw;
     text-align: center;
-    max-width: 680px;
-    width: 60%;
-    max-height: 1.5em;
-    height: 10%;
-    font-size: 300%;
+    width: 40vw;
+    max-width: 40vw;
+    height: 5vw;
+    font-size: 3vw;
     font-weight: 900;
     color: black;
-    text-shadow: 1px 0 1px #999, 0 1px 1px #999, -1px 0 1px #999, 0 -1px 1px #999;
+    text-shadow: 0.2vw 0 0.2vw #9999, 0 0.2vw 0.2vw #9999, -0.2vw 0 0.2vw #9999, 0 -0.2vw 0.2vw #9999;
     white-space: nowrap;
     overflow: hidden;
     resize: none;
@@ -219,14 +214,12 @@ p {
 
 .entry{
     margin: 0 auto;
-    max-width: 180px;
-    min-width: 20%;
-    max-height: 1.5em;
-    min-height: 10%;
+    padding: 0;
+    width: 10vw;
+    height: 3vw;
     text-align: center;
-    font-size: 200%;
+    font-size: 2vw;
     font-weight: 900;
     color: white;
     background-color: black;
-    text-shadow: 2px 0 2px #000, 0 2px 2px #000, -2px 0 2px #000, 0 -2px 2px #000;
 }
