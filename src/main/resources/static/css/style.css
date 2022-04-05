@@ -74,7 +74,10 @@ body {
 .btn,
 .input-name{
     box-shadow: 1vw 0 1vw #2F4F4F, 0 1vw 1vw #2F4F4F, -1vw 0 1vw #2F4F4F, 0 -1vw 1vw #2F4F4F;
-    border: 0.1vw;
+    border: 0.1vw solid #999999;
+}
+.windows-input:focus{
+    outline:none;
 }
 
 .windows-messages::-webkit-scrollbar,

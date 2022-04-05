@@ -16,6 +16,7 @@ public class Message {
 
     private LocalDateTime dateTime;
 
+    @Column(length = 999)
     private String message;
 
     public int getId() {

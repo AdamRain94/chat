@@ -43,7 +43,7 @@ $(function(){
     function addWindowsMessage(){
 
         $('.container').html('');
-        let windows = $('<div class="windows flex"><div class="top flex"><div class="windows-messages"></div><div class="windows-users flex"><div class="user flex"></div></div></div><div class="bottom flex"><textarea class="windows-input" id="windows-input"></textarea><button class="btn" id="btn">ОТПРАВИТЬ</button></div></div>');
+        let windows = $('<div class="windows flex"><div class="top flex"><div class="windows-messages"></div><div class="windows-users flex"><div class="user flex"></div></div></div><div class="bottom flex"><textarea class="windows-input" id="windows-input" maxlength="999"></textarea><button class="btn" id="btn">ОТПРАВИТЬ</button></div></div>');
         $('.container').append(windows);
 
         setTimeout(function(){
