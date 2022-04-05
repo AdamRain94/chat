@@ -5,7 +5,7 @@ public class Color {
     private static String color;
 
     public static String getColor(){
-        color = Math.round(150 + Math.random() * 105) + ", " + Math.round(150 + Math.random() * 105) + ", " + Math.round(150 + Math.random() * 105);
+        color = Math.round(100 + Math.random() * 155) + ", " + Math.round(100 + Math.random() * 155) + ", " + Math.round(100 + Math.random() * 155);
         return color;
     }
 }
