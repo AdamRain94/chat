@@ -141,7 +141,7 @@ $(function(){
 
     function playAudio(){
       var myAudio = new Audio;
-      myAudio.src = "../audio/notification.mp3";
+      myAudio.src = "../audio/notification.wav";
       myAudio.play();
     }
 
