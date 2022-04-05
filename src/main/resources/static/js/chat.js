@@ -63,12 +63,12 @@ $(function(){
                         }
                     }
                 });
-            }, 1000);
+            }, 500);
 
             setInterval(function(){
                 $.get('/users', {}, function(users){
                     for(i in users){
-                        if(new Date().getTime() - users[i].timeOnline > 20000){
+                        if(new Date().getTime() - users[i].timeOnline > 30000){
                             $.post('/setOffline', {sessionId : users[i].sessionId});
                             deleteUser(users[i].id);
                         } else {
@@ -78,7 +78,7 @@ $(function(){
                         }
                     }
                 });
-            }, 10000);
+            }, 7000);
 
         }, 1000);
     }
