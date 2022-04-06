@@ -27,8 +27,7 @@ $(function(){
     function addMessage(){
         setOnline();
         if($('.windows-input').val().length > 0){
-
-            send($('.windows-input').val());
+            send("1");
             $.post('/message', {message: nl2br($('.windows-input').val())});
         }
         $('.windows-input').val('');
@@ -51,19 +50,19 @@ $(function(){
                 setOnline();
             });
 
-            setInterval(function(){
-                $.get('/getCountMessage', {}, function(count){
-                    if(count != $('.name').length) {
-                        $.get('/getMessage', {}, function(message){
-                            for(i in message){
-                                if($("#" + message[i].id).length == 0) {
-                                  addOneMessage(message[i]);
-                                }
-                            }
-                        });
-                    }
-                });
-            }, 1000);
+//            setInterval(function(){
+//                $.get('/getCountMessage', {}, function(count){
+//                    if(count != $('.name').length) {
+//                        $.get('/getMessage', {}, function(message){
+//                            for(i in message){
+//                                if($("#" + message[i].id).length == 0) {
+//                                  addOneMessage(message[i]);
+//                                }
+//                            }
+//                        });
+//                    }
+//                });
+//            }, 1000);
 
             setInterval(function(){
                 $.get('/users', {}, function(users){
@@ -165,21 +164,15 @@ $(function(){
                  setMessageInnerHTML ("WebSocket успешно подключен!")
     }
 
-    webSocket.onmessage = function (event) {
-        addTestMessage(event.data);
-        setMessageInnerHTML(event.data);
+    webSocket.onmessage = function () {
+        $.get('/getMessage', {}, function(message){
+            for(i in message){
+                if($("#" + message[i].id).length == 0) {
+                  addOneMessage(message[i]);
+                }
+            }
+        });
     }
-
-        function addTestMessage(message){
-
-            let messageDiv = $('<div class="message"></div>');
-            let messageInfo = $('<div class="message-info"><div class="user-name flex"><p class="name"><b>TEST</p><p class="time">[00:00:00]</p></div></div>');
-            let messageText = $('<div class="message-text"><p class="text">' + message + '</p></div>');
-
-            messageDiv.append(messageInfo, messageText);
-            $('.windows-messages').append(messageDiv);
-            $('.windows-messages').scrollTop($('.windows-messages').prop('scrollHeight'));
-        }
 
     webSocket.onclose = function () {
          setMessageInnerHTML ("Соединение WebSocket закрыто");

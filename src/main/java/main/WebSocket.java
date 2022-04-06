@@ -38,7 +38,6 @@ public class WebSocket {
     public void send(String message){
         for (WebSocket webSocket:webSockets){
             try {
-                System.out.println("ЭТО ОНО - " + message);
                 webSocket.session.getBasicRemote().sendText(message);
             }catch (Exception e){
                 e.printStackTrace();
