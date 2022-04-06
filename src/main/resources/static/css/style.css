@@ -48,48 +48,35 @@ body {
 .windows-users,
 .windows-input {
     padding: 0.6vw;
-/*
-    border-top-left-radius: 1vw;
-    border-top-right-radius: 1vw;
-    border-bottom-left-radius: 1vw;*/
     overflow-y: scroll;
     border: 1px solid black;
 }
-
-.windows-messages{
-    border-top-left-radius: 1vw;
-}
-.windows-users{
-    border-top-right-radius: 1vw;
-}
-.windows-input {
-    border-bottom-left-radius: 1vw;
-
-}
-
 
 .windows-messages,
 .windows-users,
 .windows-input,
 .btn,
-.input-name{
+.input-name {
     box-shadow: 1vw 0 1vw #2F4F4F, 0 1vw 1vw #2F4F4F, -1vw 0 1vw #2F4F4F, 0 -1vw 1vw #2F4F4F;
     border: 0.1vw solid #999999;
 }
-.windows-input:focus{
-    outline:none;
+
+.windows-input:focus,
+.input-name:focus {
+    outline: none;
 }
 
 .windows-messages::-webkit-scrollbar,
 .windows-users::-webkit-scrollbar,
 .windows-input::-webkit-scrollbar {
-     display: none;
+    display: none;
 }
 
 .windows-messages {
     word-wrap: break-word;
     width: 78%;
     margin-right: 1vw;
+    border-top-left-radius: 1vw;
     background-image: url("../img/fon-chat.png");
     background-size: cover;
     background-position: center;
@@ -98,6 +85,7 @@ body {
 
 .windows-users {
     width: 20%;
+    border-top-right-radius: 1vw;
     background-color: black;
 }
 
@@ -108,6 +96,7 @@ body {
     margin-right: 1vw;
     color: white;
     font-size: 1vw;
+    border-bottom-left-radius: 1vw;
     background-color: black;
 }
 
@@ -160,7 +149,7 @@ p {
 }
 
 .users-name {
-    margin-bottom: 0.3vw;
+    margin-bottom: 0.1vw;
     font-size: 1vw;
     letter-spacing: 0.1em;
 }
@@ -171,6 +160,7 @@ p {
     font-size: 1.1vw;
     letter-spacing: 0.05vw;
 }
+
 .time {
     margin: 0;
     font-size: 0.9vw;
@@ -223,7 +213,7 @@ p {
     resize: none;
 }
 
-.entry{
+.entry {
     margin: 0 auto;
     padding: 0;
     width: 10vw;
@@ -232,5 +222,212 @@ p {
     font-size: 2vw;
     font-weight: 900;
     color: white;
+    border: 0.1vw solid #999999;
     background-color: black;
+}
+
+@media screen and (max-device-width: 480px) {
+    html {
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+        background-image: url("../img/fon.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    *,
+    *::after,
+    *::before {
+        box-sizing: inherit;
+    }
+    body {
+        margin: 0 auto;
+        width: 100%;
+        height: 100%;
+        font-family: 'font', sans-serif;
+    }
+    .container {
+        width: 90%;
+        height: 100%;
+        margin: auto auto;
+        justify-content: center;
+    }
+    .flex {
+        display: flex;
+    }
+    .windows {
+        margin: auto auto;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 80%;
+        background-image: none;
+        color: white;
+        text-shadow: 1vh 0 1vh #000, 0 1vh 1vh #000, -1vh 0 1vh #000, 0 -1vh 1vh #000;
+    }
+    .windows-messages,
+    .windows-users,
+    .windows-input {
+        padding: 0.6vh;
+        overflow-y: scroll;
+        border: 1px solid black;
+    }
+    .windows-messages,
+    .windows-users,
+    .windows-input,
+    .btn,
+    .input-name {
+        box-shadow: 1vh 0 1vh #2F4F4F, 0 1vh 1vh #2F4F4F, -1vh 0 1vh #2F4F4F, 0 -1vh 1vh #2F4F4F;
+        border: 0.1vh solid #999999;
+    }
+    .windows-input:focus,
+    .input-name:focus {
+        outline: none;
+    }
+    .windows-messages::-webkit-scrollbar,
+    .windows-users::-webkit-scrollbar,
+    .windows-input::-webkit-scrollbar {
+        display: none;
+    }
+    .windows-messages {
+        word-wrap: break-word;
+        width: 78%;
+        height: 100%;
+        margin-right: 1vh;
+        border-top-left-radius: 1vh;
+        background-image: url("../img/fon-chat.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    .windows-users {
+        width: 20%;
+        height: 100%;
+        border-top-right-radius: 1vh;
+        background-color: black;
+    }
+    .windows-input {
+        margin: 0;
+        resize: none;
+        width: 78%;
+        height: 100%;
+        margin-right: 1vh;
+        color: white;
+        font-size: 2vh;
+        border-bottom-left-radius: 1vh;
+        background-color: black;
+    }
+    .top {
+        margin: auto auto;
+        width: 100%;
+        height: 90%;
+        margin-bottom: 1vh;
+    }
+    .bottom {
+        margin: auto auto;
+        width: 100%;
+        height: 10%;
+    }
+    .btn {
+        margin: 0;
+        padding: 0;
+        width: 20%;
+        height: 100%;
+        text-align: center;
+        font-size: 1.2vh;
+        font-weight: 900;
+        color: #8FBC8F;
+        border-bottom-right-radius: 1vh;
+        background-color: black;
+    }
+    p {
+        margin: 0;
+        font-size: 2vh;
+        align-items: flex-end;
+    }
+    .user-name {
+        flex-direction: row;
+        align-items: flex-end;
+    }
+    .message-text {
+        margin-left: 1.3vh;
+    }
+    .user {
+        flex-direction: column;
+    }
+    .message {
+        margin-bottom: 0.3vh;
+    }
+    .users-name {
+        margin-bottom: 0.1vh;
+        font-size: 1.2vh;
+        letter-spacing: 0.1em;
+    }
+    .name {
+        margin: 0;
+        margin-right: 0.5vh;
+        font-size: 2.2vh;
+        letter-spacing: 0.05vh;
+    }
+    .time {
+        margin: 0;
+        font-size: 1.8vh;
+    }
+    .reg {
+        margin: auto auto;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        height: 100%;
+        height: 100%;
+        padding: 2vh;
+        background-image: none;
+    }
+    .welcome {
+        margin: 0;
+        padding-bottom: 3%;
+        font-size: 4vh;
+        font-weight: 900;
+        color: white;
+        text-shadow: 0.3vh 0 0.3vh #000, 0 0.3vh 0.3vh #000, -0.3vh 0 0.3vh #000, 0 -0.3vh 0.3vh #000;
+    }
+    .nik-name {
+        margin: 0;
+        padding-bottom: 1.5vh;
+        font-size: 2.5vh;
+        font-weight: 900;
+        color: white;
+        text-shadow: 0.3vh 0 0.3vh #000, 0 0.3vh 0.3vh #000, -0.3vh 0 0.3vh #000, 0 -0.3vh 0.3vh #000;
+    }
+    .input-name {
+        margin: 0 auto;
+        margin-bottom: 4vh;
+        padding: 0;
+        padding-top: 0.7vh;
+        text-align: center;
+        width: 40vh;
+        max-width: 40vh;
+        height: 5vh;
+        font-size: 3vh;
+        font-weight: 900;
+        color: black;
+        text-shadow: 0.2vh 0 0.2vh #9999, 0 0.2vh 0.2vh #9999, -0.2vh 0 0.2vh #9999, 0 -0.2vh 0.2vh #9999;
+        white-space: nowrap;
+        overflow: hidden;
+        resize: none;
+    }
+    .entry {
+        margin: 0 auto;
+        padding: 0;
+        width: 20vh;
+        height: 6vh;
+        text-align: center;
+        font-size: 4vh;
+        font-weight: 900;
+        color: white;
+        border: 0.1vh solid #999999;
+        background-color: black;
+    }
 }

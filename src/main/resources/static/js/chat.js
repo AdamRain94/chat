@@ -63,7 +63,7 @@ $(function(){
                         }
                     }
                 });
-            }, 500);
+            }, 300);
 
             setInterval(function(){
                 $.get('/users', {}, function(users){
