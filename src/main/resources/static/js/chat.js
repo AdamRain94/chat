@@ -158,7 +158,7 @@ $(function(){
     if ('WebSocket' in window){
         webSocket=new WebSocket('ws://localhost:8080/webSocket');
     } else{
-        alert ("Текущий браузер не поддерживает WebSocket");
+        send("Текущий браузер не поддерживает WebSocket");
     }
 
     webSocket.onopen=function () {
@@ -166,7 +166,7 @@ $(function(){
     }
 
     webSocket.onmessage=function (event) {
-        console.log("вот это оно если че - " + event.data);
+        addOneMessage(event.data);
         setMessageInnerHTML(event.data);
     }
 

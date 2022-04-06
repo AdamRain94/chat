@@ -36,9 +36,6 @@ public class WebSocket {
 
     @OnMessage
     public void onMessage(String message){
-
-        System.out.println(message);
-
         send(message);
     }
 
