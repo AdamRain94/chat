@@ -110,6 +110,7 @@ $(function(){
     function entry(){
         if($('.input-name').val().length > 0){
             $.post('/nikname', {nik: $('.input-name').val()});
+            send($('.input-name').val());
             addWindowsMessage();
         }
     }
@@ -147,4 +148,46 @@ $(function(){
         return text.replace(/(\r\n|\n\r|\r|\n)/g, "<br>");
     };
 
+    var  webSocket=null;
+
+         // Определяем, поддерживает ли текущий браузер WebSocket
+    if ('WebSocket' in window){
+        webSocket=new WebSocket('ws://localhost:8080/webSocket');
+    } else{
+                 alert ("Текущий браузер не поддерживает WebSocket");
+    }
+
+         // Метод обратного вызова для ошибки соединения
+    webSocket.onerror=function () {
+                 setMessageInnerHTML ("Произошла ошибка в соединении WebSocket!");
+    }
+
+    webSocket.onopen=function () {
+                 setMessageInnerHTML ("WebSocket успешно подключен!")
+    }
+
+    webSocket.onmessage=function (event) {
+        setMessageInnerHTML(event.data);
+    }
+
+    webSocket.onclose=function () {
+                 setMessageInnerHTML ("Соединение WebSocket закрыто");
+    }
+
+    window.onbeforeunload=function () {
+        closeWebSocket();
+    }
+
+    function closeWebSocket() {
+        webSocket.close();
+    }
+
+    function send(message) {
+        webSocket.send(message);
+    }
+
+         // Показать сообщение на веб-странице
+    function setMessageInnerHTML(innerHTML) {
+        console.log(innerHTML);
+    }
 });

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
@@ -24,7 +25,14 @@ public class ChatController {
     @Autowired
     private MessageRepository messageRepository;
 
-    @GetMapping("/sessionId")
+
+    @GetMapping("/client")
+    public ModelAndView client() {
+        return new ModelAndView("client");
+    }
+
+
+        @GetMapping("/sessionId")
     public String SessionId() {
         String sessionId = RequestContextHolder.currentRequestAttributes().getSessionId();
         Optional<Users> optionalUsers = userRepository.findBySessionId(sessionId);
