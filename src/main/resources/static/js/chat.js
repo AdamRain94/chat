@@ -153,13 +153,13 @@ $(function(){
 
 
 
-    let  webSocket = null;
+    let  webSocket = new WebSocket('ws://chatik-adamrain-prod.herokuapp.com/');
 
-    if ('WebSocket' in window){
-        webSocket = new WebSocket('ws://chatik-adamrain-prod.herokuapp.com//webSocket');
-    } else{
-        send("Текущий браузер не поддерживает WebSocket");
-    }
+//    if ('WebSocket' in window){
+//        webSocket = new WebSocket('ws://chatik-adamrain-prod.herokuapp.com//webSocket');
+//    } else{
+//        send("Текущий браузер не поддерживает WebSocket");
+//    }
 
     webSocket.onopen = function () {
                  setMessageInnerHTML ("WebSocket успешно подключен!")
