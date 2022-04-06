@@ -214,6 +214,7 @@ p{
     width: 40vw;
     max-width: 40vw;
     height: 5vw;
+    min-height: 5vw;
     font-size: 3vw;
     font-weight: 900;
     color: black;

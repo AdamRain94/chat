@@ -50,11 +50,15 @@ $(function(){
             });
 
             setInterval(function(){
-                $.get('/getMessage', {}, function(message){
-                    for(i in message){
-                        if($("#" + message[i].id).length == 0) {
-                          addOneMessage(message[i]);
-                        }
+                $.get('/getCountMessage', {}, function(count){
+                    if(count != $('.name').length) {
+                        $.get('/getMessage', {}, function(message){
+                            for(i in message){
+                                if($("#" + message[i].id).length == 0) {
+                                  addOneMessage(message[i]);
+                                }
+                            }
+                        });
                     }
                 });
             }, 300);
@@ -62,10 +66,10 @@ $(function(){
             setInterval(function(){
                 $.get('/users', {}, function(users){
                     for(i in users){
-                        if(new Date().getTime() - users[i].timeOnline > 30000){
+                        if((new Date().getTime() - users[i].timeOnline > 30000) && users[i].online){
                             $.post('/setOffline', {sessionId : users[i].sessionId});
                             deleteUser(users[i].id);
-                        } else {
+                        } else if (users[i].online) {
                             if($("#" + users[i].id).length == 0) {
                               addUser(users[i]);
                             }
