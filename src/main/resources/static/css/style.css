@@ -125,12 +125,6 @@ body {
     background-color: black;
 }
 
-p {
-    margin: 0;
-    font-size: 1vw;
-    align-items: flex-end;
-}
-
 .user-name {
     flex-direction: row;
     align-items: flex-end;
@@ -164,6 +158,12 @@ p {
 .time {
     margin: 0;
     font-size: 0.9vw;
+}
+
+p {
+    margin: 0;
+    font-size: 1vw;
+    align-items: flex-end;
 }
 
 .reg {
@@ -342,14 +342,16 @@ p {
         border-bottom-right-radius: 1vw;
         background-color: black;
     }
-
+    p {
+        margin: 0;
+        font-size: 3vw;
+        align-items: flex-end;
+    }
     .user-name {
-        z-index: 2;
         flex-direction: row;
         align-items: center;
     }
     .message-text {
-        z-index: 1;
         margin-left: 3vw;
     }
     .user {
@@ -364,23 +366,15 @@ p {
         letter-spacing: 0.1em;
     }
     .name {
-        z-index: 1;
         margin: 0;
         margin-right: 0.8vw;
         font-size: 3.5vw;
         letter-spacing: 0.05vw;
     }
     .time {
-        z-index: 1;
         margin: 0;
         font-size: 2.4vw;
     }
-   p {
-       z-index: 2;
-       margin: 0;
-       font-size: 3vw;
-       align-items: flex-end;
-   }
     .reg {
         margin: auto auto;
         flex-direction: column;
