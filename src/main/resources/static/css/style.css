@@ -156,14 +156,14 @@ p {
 
 .name {
     margin: 0;
-    margin-right: 0.5vw;
+    margin-right: 0.8vw;
     font-size: 1.1vw;
     letter-spacing: 0.05vw;
 }
 
 .time {
     margin: 0;
-    font-size: 0.9vw;
+    font-size: 0.7vw;
 }
 
 .reg {
