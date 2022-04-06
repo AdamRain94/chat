@@ -41,7 +41,6 @@ body {
     height: 40vw;
     background-image: none;
     color: white;
-    text-shadow: 1vw 0 1vw #000, 0 1vw 1vw #000, -1vw 0 1vw #000, 0 -1vw 1vw #000;
 }
 
 .windows-messages,
@@ -127,7 +126,7 @@ body {
 
 .user-name {
     flex-direction: row;
-    align-items: flex-end;
+    align-items: flex-start;
 }
 
 .message-text {
@@ -154,23 +153,27 @@ body {
     margin-right: 0.5vw;
     font-size: 1.1vw;
     letter-spacing: 0.05vw;
-    z-index: 2;
+    text-shadow: 1vw 0 1vw #000, -1vw 0 1vw #000, 0 -1vw 1vw #000;
 }
 
 .time {
     position: relative;
     margin: 0;
     font-size: 0.9vw;
-    z-index: 2;
+    text-shadow: 1vw 0 1vw #000, -1vw 0 1vw #000, 0 -1vw 1vw #000;
 }
-
-p {
+p{
+    color: white;
+    margin: 0;
+}
+.text {
     color: white;
     position: relative;
     margin: 0;
     font-size: 1vw;
     align-items: flex-end;
-    z-index: 1;
+    white-space: pre-wrap;
+    text-shadow: 1vw 0 1vw #000, 0 1vw 1vw #000, -1vw 0 1vw #000;
 }
 
 .reg {
@@ -350,10 +353,18 @@ p {
         background-color: black;
     }
     p {
+       color: white;
+       margin: 0;
+    }
+
+    .text {
+        color: white;
         margin: 0;
         font-size: 3vw;
         align-items: flex-end;
+        white-space: pre-wrap;
     }
+
     .user-name {
         flex-direction: row;
         align-items: center;

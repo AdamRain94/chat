@@ -16,15 +16,10 @@ $(function(){
 
         let messageDiv = $('<div class="message"></div>');
         let messageInfo = $('<div class="message-info"><div class="user-name flex"><p class="name" id="' + message.id + '" style="color: rgb(' + message.users.color + '); "><b>' + message.users.name + '</p><p class="time">[' + new Date(message.dateTime).toLocaleTimeString() + ']</p></div></div>');
-        let messageText = $('<div class="message-text"><p>' + message.message + '</p></div>');
+        let messageText = $('<div class="message-text"><p class="text">' + message.message + '</p></div>');
 
         messageDiv.append(messageInfo, messageText);
         $('.windows-messages').append(messageDiv);
-
-        $.get('/getCountMessage', {}, function(response){
-            countMessage = response;
-        });
-
         $('.windows-messages').scrollTop($('.windows-messages').prop('scrollHeight'));
     }
 
@@ -32,7 +27,7 @@ $(function(){
     function addMessage(){
         setOnline();
         if($('.windows-input').val().length > 0){
-            $.post('/message', {message: $('.windows-input').val()});
+            $.post('/message', {message: nl2br($('.windows-input').val())});
         }
         $('.windows-input').val('');
         $('.windows-input').focus();
@@ -115,12 +110,6 @@ $(function(){
         }
     }
 
-    $(document).on('keydown', '.windows-input', function(e) {
-        if ((e.keyCode == 13 || e.keyCode == 10)) {
-            e.preventDefault();
-            addMessage();
-        }
-    });
 
     $(document).on('keydown', '.input-name', function(e) {
         if (e.keyCode == 32) {
@@ -135,8 +124,23 @@ $(function(){
         }
     });
 
+    $(document).on('keydown', '.windows-input', function(e) {
+        if (e.ctrlKey && (e.keyCode == 13 || e.keyCode == 10)) {
+            caretStart = this.selectionStart;
+            caretEnd = this.selectionEnd;
+            this.value = (this.value.substring(0, caretStart) + "\n" + this.value.substring(caretEnd));
+            this.setSelectionRange(caretStart + 1 ,caretEnd + 1);
+        } else if ((e.keyCode == 13 || e.keyCode == 10)) {
+            e.preventDefault();
+            addMessage();
+        }
+    });
+
     $(document).on('click', '.btn', addMessage);
     $(document).on('click', '.entry', entry);
 
+    nl2br = function(text){
+        return text.replace(/(\r\n|\n\r|\r|\n)/g, "<br>");
+    };
 
 });
