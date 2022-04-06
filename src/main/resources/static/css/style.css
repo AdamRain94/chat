@@ -270,7 +270,7 @@ p {
     .windows-messages,
     .windows-users,
     .windows-input {
-        padding: 1vw;
+        padding: 1.2vw;
         overflow-y: scroll;
         border: 1px solid black;
     }
@@ -349,7 +349,7 @@ p {
     }
     .user-name {
         flex-direction: row;
-        align-items: flex-end;
+        align-items: center;
     }
     .message-text {
         margin-left: 3vw;
