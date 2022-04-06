@@ -153,7 +153,7 @@ $(function(){
 
 
 
-    let  webSocket = new WebSocket('ws://chatik-adamrain-prod.herokuapp.com/');
+    let  webSocket = new WebSocket('wss://chatik-adamrain-prod.herokuapp.com/');
 
 //    if ('WebSocket' in window){
 //        webSocket = new WebSocket('ws://chatik-adamrain-prod.herokuapp.com//webSocket');
