@@ -342,11 +342,7 @@ p {
         border-bottom-right-radius: 1vw;
         background-color: black;
     }
-    p {
-        margin: 0;
-        font-size: 3vw;
-        align-items: flex-end;
-    }
+
     .user-name {
         flex-direction: row;
         align-items: center;
@@ -375,6 +371,11 @@ p {
         margin: 0;
         font-size: 2.4vw;
     }
+   p {
+       margin: 0;
+       font-size: 3vw;
+       align-items: flex-end;
+   }
     .reg {
         margin: auto auto;
         flex-direction: column;
