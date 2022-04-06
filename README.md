@@ -7,6 +7,6 @@ Null-style chat written in Java using the Spring Boot framework. Users and messa
 Adapted to mobile devices:
 
 <p align="center">
-  <img src="https://github.com/AdamRain94/chat/blob/main/gif/Screenshot_gif.gif">
+  <img src="https://github.com/AdamRain94/chat/blob/main/gif/Screenshot_gif.gif" width="400">
   <img src="https://github.com/AdamRain94/chat/blob/main/gif/Screenshot_gif2.gif">
 </p>
