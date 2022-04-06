@@ -47,7 +47,7 @@ body {
 .windows-messages,
 .windows-users,
 .windows-input {
-    padding: 5vw;
+    padding: 20vw;
     overflow-y: scroll;
     border: 1px solid black;
 }
