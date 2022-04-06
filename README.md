@@ -6,6 +6,6 @@
   <img src="https://github.com/AdamRain94/chat/blob/main/img_for_readMe/Screenshot_gif2.gif" height="404">
 </p>
 Database Diagram:
-<p >
+<p align="center">
   <img src="https://github.com/AdamRain94/chat/blob/main/img_for_readMe/screen_img_tab.png">
 </p>
