@@ -26,7 +26,6 @@ $(function(){
         });
 
         $('.windows-messages').scrollTop($('.windows-messages').prop('scrollHeight'));
-//        playAudio();
     }
 
 
@@ -63,7 +62,7 @@ $(function(){
                         }
                     }
                 });
-            }, 500);
+            }, 300);
 
             setInterval(function(){
                 $.get('/users', {}, function(users){
@@ -139,10 +138,5 @@ $(function(){
     $(document).on('click', '.btn', addMessage);
     $(document).on('click', '.entry', entry);
 
-//    function playAudio(){
-//      var myAudio = new Audio;
-//      myAudio.src = "../audio/notification.wav";
-//      myAudio.play();
-//    }
 
 });
