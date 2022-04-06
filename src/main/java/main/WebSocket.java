@@ -17,11 +17,12 @@ public class WebSocket {
 
     private Session session;
 
-    private static CopyOnWriteArraySet<WebSocket> webSockets=new CopyOnWriteArraySet<>();
+    private static CopyOnWriteArraySet<WebSocket> webSockets = new CopyOnWriteArraySet<>();
 
     @OnOpen
     public void onOpen(Session session){
-        this.session=session;
+        this.session = session;
+        System.out.println("это this - " + this);
         webSockets.add(this);
         System.out.println ("Всего новых подключений" + webSockets.size ());
     }

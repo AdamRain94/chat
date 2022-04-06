@@ -27,6 +27,8 @@ $(function(){
     function addMessage(){
         setOnline();
         if($('.windows-input').val().length > 0){
+
+            send($('.windows-input').val());
             $.post('/message', {message: nl2br($('.windows-input').val())});
         }
         $('.windows-input').val('');
@@ -110,7 +112,6 @@ $(function(){
     function entry(){
         if($('.input-name').val().length > 0){
             $.post('/nikname', {nik: $('.input-name').val()});
-            send($('.input-name').val());
             addWindowsMessage();
         }
     }
@@ -148,18 +149,16 @@ $(function(){
         return text.replace(/(\r\n|\n\r|\r|\n)/g, "<br>");
     };
 
-    var  webSocket=null;
 
-         // Определяем, поддерживает ли текущий браузер WebSocket
+
+
+
+    let  webSocket = null;
+
     if ('WebSocket' in window){
         webSocket=new WebSocket('ws://localhost:8080/webSocket');
     } else{
-                 alert ("Текущий браузер не поддерживает WebSocket");
-    }
-
-         // Метод обратного вызова для ошибки соединения
-    webSocket.onerror=function () {
-                 setMessageInnerHTML ("Произошла ошибка в соединении WebSocket!");
+        alert ("Текущий браузер не поддерживает WebSocket");
     }
 
     webSocket.onopen=function () {
@@ -167,11 +166,12 @@ $(function(){
     }
 
     webSocket.onmessage=function (event) {
+        console.log("вот это оно если че - " + event.data);
         setMessageInnerHTML(event.data);
     }
 
     webSocket.onclose=function () {
-                 setMessageInnerHTML ("Соединение WebSocket закрыто");
+         setMessageInnerHTML ("Соединение WebSocket закрыто");
     }
 
     window.onbeforeunload=function () {
@@ -186,7 +186,6 @@ $(function(){
         webSocket.send(message);
     }
 
-         // Показать сообщение на веб-странице
     function setMessageInnerHTML(innerHTML) {
         console.log(innerHTML);
     }
