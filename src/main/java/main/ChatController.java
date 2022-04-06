@@ -31,10 +31,10 @@ public class ChatController {
         return new ModelAndView("client");
     }
 
-
-        @GetMapping("/sessionId")
+    @GetMapping("/sessionId")
     public String SessionId() {
         String sessionId = RequestContextHolder.currentRequestAttributes().getSessionId();
+        System.out.println("f 'nj nen- " + sessionId);
         Optional<Users> optionalUsers = userRepository.findBySessionId(sessionId);
         if (optionalUsers.isPresent()) {
             return "yes";

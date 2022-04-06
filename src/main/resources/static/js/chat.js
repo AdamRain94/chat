@@ -27,7 +27,7 @@ $(function(){
     function addMessage(){
         setOnline();
         if($('.windows-input').val().length > 0){
-            send("1");
+            send(nl2br($('.windows-input').val()));
             $.post('/message', {message: nl2br($('.windows-input').val())});
         }
         $('.windows-input').val('');
@@ -152,7 +152,7 @@ $(function(){
 
 
 
-    let  webSocket = new WebSocket('wss://chatik-adamrain-prod.herokuapp.com/webSocket');
+    let  webSocket = new WebSocket('ws://localhost:8080/webSocket');
 
 //    if ('WebSocket' in window){
 //        webSocket = new WebSocket('ws://chatik-adamrain-prod.herokuapp.com//webSocket');
@@ -161,10 +161,11 @@ $(function(){
 //    }
 
     webSocket.onopen = function () {
-                 setMessageInnerHTML ("WebSocket успешно подключен!")
+                 consoleLog("WebSocket успешно подключен!")
     }
 
-    webSocket.onmessage = function () {
+    webSocket.onmessage = function (messages) {
+        consoleLog(messages.data)
         $.get('/getMessage', {}, function(message){
             for(i in message){
                 if($("#" + message[i].id).length == 0) {
@@ -175,7 +176,7 @@ $(function(){
     }
 
     webSocket.onclose = function () {
-         setMessageInnerHTML ("Соединение WebSocket закрыто");
+         consoleLog("Соединение WebSocket закрыто");
     }
 
     window.onbeforeunload = function () {
@@ -190,7 +191,7 @@ $(function(){
         webSocket.send(message);
     }
 
-    function setMessageInnerHTML(innerHTML) {
+    function consoleLog(innerHTML) {
         console.log(innerHTML);
     }
 });
