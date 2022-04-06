@@ -26,7 +26,7 @@ $(function(){
         });
 
         $('.windows-messages').scrollTop($('.windows-messages').prop('scrollHeight'));
-        playAudio();
+//        playAudio();
     }
 
 
