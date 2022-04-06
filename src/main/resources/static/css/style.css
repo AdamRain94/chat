@@ -47,7 +47,7 @@ body {
 .windows-messages,
 .windows-users,
 .windows-input {
-    padding: 20vw;
+    padding: 0.6vw;
     overflow-y: scroll;
     border: 1px solid black;
 }
@@ -137,7 +137,7 @@ p {
 }
 
 .message-text {
-    margin-left: 3vw;
+    margin-left: 1.3vw;
 }
 
 .user {
@@ -156,14 +156,14 @@ p {
 
 .name {
     margin: 0;
-    margin-right: 2vw;
+    margin-right: 0.5vw;
     font-size: 1.1vw;
     letter-spacing: 0.05vw;
 }
 
 .time {
     margin: 0;
-    font-size: 0.2vw;
+    font-size: 0.9vw;
 }
 
 .reg {
@@ -270,7 +270,7 @@ p {
     .windows-messages,
     .windows-users,
     .windows-input {
-        padding: 0.6vw;
+        padding: 1vw;
         overflow-y: scroll;
         border: 1px solid black;
     }
@@ -352,7 +352,7 @@ p {
         align-items: flex-end;
     }
     .message-text {
-        margin-left: 2vw;
+        margin-left: 3vw;
     }
     .user {
         flex-direction: column;
@@ -367,13 +367,13 @@ p {
     }
     .name {
         margin: 0;
-        margin-right: 0.5vw;
+        margin-right: 0.8vw;
         font-size: 3.5vw;
         letter-spacing: 0.05vw;
     }
     .time {
         margin: 0;
-        font-size: 2.9vw;
+        font-size: 2.4vw;
     }
     .reg {
         margin: auto auto;
