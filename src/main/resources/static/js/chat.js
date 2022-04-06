@@ -63,7 +63,7 @@ $(function(){
                         }
                     }
                 });
-            }, 300);
+            }, 500);
 
             setInterval(function(){
                 $.get('/users', {}, function(users){
@@ -139,10 +139,10 @@ $(function(){
     $(document).on('click', '.btn', addMessage);
     $(document).on('click', '.entry', entry);
 
-    function playAudio(){
-      var myAudio = new Audio;
-      myAudio.src = "../audio/notification.wav";
-      myAudio.play();
-    }
+//    function playAudio(){
+//      var myAudio = new Audio;
+//      myAudio.src = "../audio/notification.wav";
+//      myAudio.play();
+//    }
 
 });
