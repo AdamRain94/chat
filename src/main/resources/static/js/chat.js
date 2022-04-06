@@ -166,9 +166,20 @@ $(function(){
     }
 
     webSocket.onmessage=function (event) {
-        addOneMessage(event.data);
+        addTestMessage(event.data);
         setMessageInnerHTML(event.data);
     }
+
+        function addTestMessage(message){
+    
+            let messageDiv = $('<div class="message"></div>');
+            let messageInfo = $('<div class="message-info"><div class="user-name flex"><p class="name"><b>TEST</p><p class="time">[00:00:00]</p></div></div>');
+            let messageText = $('<div class="message-text"><p class="text">' + message + '</p></div>');
+
+            messageDiv.append(messageInfo, messageText);
+            $('.windows-messages').append(messageDiv);
+            $('.windows-messages').scrollTop($('.windows-messages').prop('scrollHeight'));
+        }
 
     webSocket.onclose=function () {
          setMessageInnerHTML ("Соединение WebSocket закрыто");
