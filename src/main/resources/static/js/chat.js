@@ -156,22 +156,22 @@ $(function(){
     let  webSocket = null;
 
     if ('WebSocket' in window){
-        webSocket=new WebSocket('ws://localhost:8080/webSocket');
+        webSocket = new WebSocket('ws://chatik-adamrain-prod.herokuapp.com//webSocket');
     } else{
         send("Текущий браузер не поддерживает WebSocket");
     }
 
-    webSocket.onopen=function () {
+    webSocket.onopen = function () {
                  setMessageInnerHTML ("WebSocket успешно подключен!")
     }
 
-    webSocket.onmessage=function (event) {
+    webSocket.onmessage = function (event) {
         addTestMessage(event.data);
         setMessageInnerHTML(event.data);
     }
 
         function addTestMessage(message){
-    
+
             let messageDiv = $('<div class="message"></div>');
             let messageInfo = $('<div class="message-info"><div class="user-name flex"><p class="name"><b>TEST</p><p class="time">[00:00:00]</p></div></div>');
             let messageText = $('<div class="message-text"><p class="text">' + message + '</p></div>');
@@ -181,11 +181,11 @@ $(function(){
             $('.windows-messages').scrollTop($('.windows-messages').prop('scrollHeight'));
         }
 
-    webSocket.onclose=function () {
+    webSocket.onclose = function () {
          setMessageInnerHTML ("Соединение WebSocket закрыто");
     }
 
-    window.onbeforeunload=function () {
+    window.onbeforeunload = function () {
         closeWebSocket();
     }
 
