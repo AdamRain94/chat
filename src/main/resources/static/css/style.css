@@ -364,16 +364,19 @@ p {
         letter-spacing: 0.1em;
     }
     .name {
+        z-index: 1;
         margin: 0;
         margin-right: 0.8vw;
         font-size: 3.5vw;
         letter-spacing: 0.05vw;
     }
     .time {
+        z-index: 1;
         margin: 0;
         font-size: 2.4vw;
     }
    p {
+       z-index: 2;
        margin: 0;
        font-size: 3vw;
        align-items: flex-end;
