@@ -344,10 +344,12 @@ p {
     }
 
     .user-name {
+        z-index: 2;
         flex-direction: row;
         align-items: center;
     }
     .message-text {
+        z-index: 1;
         margin-left: 3vw;
     }
     .user {
