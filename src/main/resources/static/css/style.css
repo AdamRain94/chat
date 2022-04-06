@@ -47,7 +47,7 @@ body {
 .windows-messages,
 .windows-users,
 .windows-input {
-    padding: 1vw;
+    padding: 2vw;
     overflow-y: scroll;
     border: 1px solid black;
 }
@@ -137,7 +137,7 @@ p {
 }
 
 .message-text {
-    margin-left: 2vw;
+    margin-left: 3vw;
 }
 
 .user {
@@ -163,7 +163,7 @@ p {
 
 .time {
     margin: 0;
-    font-size: 0.6vw;
+    font-size: 0.4vw;
 }
 
 .reg {
