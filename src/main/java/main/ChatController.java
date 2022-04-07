@@ -7,11 +7,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -25,16 +24,15 @@ public class ChatController {
     @Autowired
     private MessageRepository messageRepository;
 
-
-    @GetMapping("/client")
-    public ModelAndView client() {
-        return new ModelAndView("client");
-    }
+//
+//    @GetMapping("/client")
+//    public ModelAndView client() {
+//        return new ModelAndView("client");
+//    }
 
     @GetMapping("/sessionId")
     public String SessionId() {
         String sessionId = RequestContextHolder.currentRequestAttributes().getSessionId();
-        System.out.println("f 'nj nen- " + sessionId);
         Optional<Users> optionalUsers = userRepository.findBySessionId(sessionId);
         if (optionalUsers.isPresent()) {
             return "yes";
@@ -53,7 +51,7 @@ public class ChatController {
     }
 
     @PostMapping("/message")
-    public void message(@RequestParam String message) {
+    public int message(@RequestParam String message) {
         Message msg = new Message();
         String sessionId = RequestContextHolder.currentRequestAttributes().getSessionId();
         Users users = userRepository.findBySessionId(sessionId).get();
@@ -61,31 +59,24 @@ public class ChatController {
         msg.setDateTime(LocalDateTime.from(ZonedDateTime.now()));
         msg.setUsers(users);
         messageRepository.save(msg);
+        return msg.getId();
     }
 
     @GetMapping("/users")
     public List<Users> getUsers() {
-        List<Users> listUsers = new ArrayList<>();
-        userRepository.findAll().forEach(listUsers::add);
-        return listUsers;
-    }
-
-    @GetMapping("/usersOnline")
-    public List<Users> getUsersOnline() {
-        List<Users> listUsersOnline = new ArrayList<>();
-        userRepository.findAll().forEach(users -> {
-            if (users.isOnline()) {
-                listUsersOnline.add(users);
-            }
-        });
-        return listUsersOnline;
+        return userRepository.findByOnline(true);
     }
 
     @GetMapping("/getMessage")
     public List<Message> getMessage() {
-        List<Message> listMessage = new ArrayList<>();
-        messageRepository.findAll().forEach(listMessage::add);
-        return listMessage;
+        List<Message> messages = messageRepository.findFirst30ByOrderByDateTimeDesc();
+        Collections.sort(messages);
+        return messages;
+    }
+
+    @GetMapping("/getMessageById")
+    public Message getMessageById(int id) {
+        return messageRepository.findById(id).get();
     }
 
     @GetMapping("/setOnline")
@@ -104,13 +95,4 @@ public class ChatController {
         userRepository.save(users);
     }
 
-    @GetMapping("/getCountOnline")
-    public int getCountOnline() {
-        return (int) userRepository.countByOnline(true);
-    }
-
-    @GetMapping("/getCountMessage")
-    public int getCountMessage() {
-        return (int) messageRepository.count();
-    }
 }

@@ -6,7 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="54dacff3-a03f-45a9-9ab0-b0a865715769" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/ChatController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/MessageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/MessageRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/UserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main/WebSocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/WebSocket.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/chat.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/chat.js" afterDir="false" />
     </list>
@@ -62,8 +67,8 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../java_basics/SpringBootWebDevelopment/ToDoList" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Java/java_basics/12_ExceptionsDebuggingAndTesting/homework_12.2/SPBMetro" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">

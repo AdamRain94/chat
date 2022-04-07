@@ -9,7 +9,6 @@ $(function(){
                 addOneMessage(response[i]);
             }
         });
-
     }
 
     function addOneMessage(message){
@@ -27,8 +26,9 @@ $(function(){
     function addMessage(){
         setOnline();
         if($('.windows-input').val().length > 0){
-            send(nl2br($('.windows-input').val()));
-            $.post('/message', {message: nl2br($('.windows-input').val())});
+            $.post('/message', {message: nl2br($('.windows-input').val())}, function(messageId){
+                send(messageId)
+            });
         }
         $('.windows-input').val('');
         $('.windows-input').focus();
@@ -50,20 +50,6 @@ $(function(){
                 setOnline();
             });
 
-//            setInterval(function(){
-//                $.get('/getCountMessage', {}, function(count){
-//                    if(count != $('.name').length) {
-//                        $.get('/getMessage', {}, function(message){
-//                            for(i in message){
-//                                if($("#" + message[i].id).length == 0) {
-//                                  addOneMessage(message[i]);
-//                                }
-//                            }
-//                        });
-//                    }
-//                });
-//            }, 1000);
-
             setInterval(function(){
                 $.get('/users', {}, function(users){
                     for(i in users){
@@ -79,7 +65,7 @@ $(function(){
                 });
             }, 7000);
 
-        }, 1000);
+        }, 1);
     }
 
     function addUser(user){
@@ -93,11 +79,9 @@ $(function(){
     }
     function updateUsers(){
         $('.user').html('');
-        $.get('/users', {}, function(response){
-            for(i in response){
-                if(response[i].online){
-                    addUser(response[i]);
-                }
+        $.get('/users', {}, function(users){
+            for(i in users){
+                addUser(users[i]);
             }
         });
     }
@@ -105,6 +89,9 @@ $(function(){
     $.get('/sessionId', {}, function(response){
         if(response == "yes"){
             addWindowsMessage();
+        } else {
+            let reg = $('<div class="reg flex"><h1 class="welcome">ДОБРО ПОЖАЛОВАТЬ!</h1><h2 class="nik-name">Введите свой никнейм</h2><textarea class="input-name flex" maxlength="12" id="input-name"></textarea><button class="entry" id="entry">ВОЙТИ</button></div>');
+            $('.container').append(reg);
         }
     });
 
@@ -151,28 +138,26 @@ $(function(){
 
 
 
+//webSocket для тестирования локально
+//    let  webSocket = new WebSocket('ws://localhost:8080/webSocket');
 
-    let  webSocket = new WebSocket('ws://localhost:8080/webSocket');
-
-//    if ('WebSocket' in window){
-//        webSocket = new WebSocket('ws://chatik-adamrain-prod.herokuapp.com//webSocket');
-//    } else{
-//        send("Текущий браузер не поддерживает WebSocket");
-//    }
+    if ('WebSocket' in window){
+        webSocket = new WebSocket('wss://chatik-adamrain-prod.herokuapp.com/webSocket');
+    } else{
+        send("Текущий браузер не поддерживает WebSocket");
+    }
 
     webSocket.onopen = function () {
                  consoleLog("WebSocket успешно подключен!")
     }
 
-    webSocket.onmessage = function (messages) {
-        consoleLog(messages.data)
-        $.get('/getMessage', {}, function(message){
-            for(i in message){
-                if($("#" + message[i].id).length == 0) {
-                  addOneMessage(message[i]);
-                }
-            }
-        });
+    webSocket.onmessage = function (messageId) {
+         consoleLog(messageId.data);
+         $.get('/getMessageById', {id : messageId.data}, function(message){
+             if($("#" + message.id).length == 0) {
+               addOneMessage(message);
+             }
+         });
     }
 
     webSocket.onclose = function () {
@@ -191,7 +176,7 @@ $(function(){
         webSocket.send(message);
     }
 
-    function consoleLog(innerHTML) {
-        console.log(innerHTML);
+    function consoleLog(message) {
+        console.log(message);
     }
 });

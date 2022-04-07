@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-public class Message {
+public class Message implements Comparable<Message>  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -49,5 +49,10 @@ public class Message {
 
     public void setUsers(Users users) {
         this.users = users;
+    }
+
+    @Override
+    public int compareTo(Message o) {
+        return this.getId() - o.getId();
     }
 }

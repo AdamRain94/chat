@@ -1,20 +1,15 @@
 package main;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.request.RequestContextHolder;
 
 import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 @Component
-@ServerEndpoint("/webSocket")
+@ServerEndpoint(value = "/webSocket")
 public class WebSocket {
-
-    @Autowired
-    private MessageRepository messageRepository;
 
     private Session session;
 
@@ -23,6 +18,7 @@ public class WebSocket {
     @OnOpen
     public void onOpen(Session session,  EndpointConfig config){
         this.session = session;
+        System.out.println ("Есть новые подключения, всего " + webSockets.size ());
         webSockets.add(this);
     }
 
@@ -33,14 +29,13 @@ public class WebSocket {
     }
 
     @OnMessage
-    public void onMessage(String message){
+    public void onMessage(String  message) {
         send(message);
     }
 
     public void send(String message){
         for (WebSocket webSocket:webSockets){
             try {
-                System.out.println("сообщение - " + message);
                 webSocket.session.getBasicRemote().sendText(message);
             }catch (Exception e){
                 e.printStackTrace();
