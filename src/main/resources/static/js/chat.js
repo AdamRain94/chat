@@ -152,11 +152,8 @@ $(function(){
     }
 
     webSocket.onmessage = function (messageId) {
-         consoleLog(messageId.data);
          $.get('/getMessageById', {id : messageId.data}, function(message){
-             if($("#" + message.id).length == 0) {
                addOneMessage(message);
-             }
          });
     }
 
