@@ -17,7 +17,7 @@ $(function(){
         let messageInfo = $('<div class="message-info"><div class="user-name flex"><p class="name" id="' + message.id + '" style="color: rgb(' + message.users.color + '); "><b>' + message.users.name + '</p><p class="time">[' + new Date(new Date(message.dateTime).setHours(new Date(message.dateTime).getHours() + 3)).toLocaleTimeString() + ']</p></div></div>');
         let messageText = $('<div class="message-text"><p class="text">' + message.message + '</p></div>');
                                                                                                                                                                                                                                     consoleLog(new Date().getTimezoneOffset());
-                                                                                                                                                                                                                                    consoleLog(new Date(message.dateTime));
+                                                                                                                                                                                                                                    consoleLog(message.dateTime);
         messageDiv.append(messageInfo, messageText);
         $('.windows-messages').append(messageDiv);
         $('.windows-messages').scrollTop($('.windows-messages').prop('scrollHeight'));
