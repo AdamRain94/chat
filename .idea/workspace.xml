@@ -5,6 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54dacff3-a03f-45a9-9ab0-b0a865715769" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/ChatController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/Message.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/chat.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/chat.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -77,7 +81,7 @@
   <component name="RunManager">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <envs>
-        <env name="CLEARDB_DATABASE_URL" value="mysql://scentbgs_chatik:AdAm123654RaIn@scentbgs.beget.tech/scentbgs_chatik?useUnicode=true&amp;serverTimezone=UTC&amp;useSSL=true&amp;verifyServerCertificate=false&amp;reconnect=true" />
+        <env name="CLEARDB_DATABASE_URL" value="mysql://scentbgs_chatik:AdAm123654RaIn@scentbgs.beget.tech/scentbgs_chatik?useUnicode=true&amp;serverTimezone=Europe/Moscow&amp;useSSL=true&amp;verifyServerCertificate=false&amp;reconnect=true" />
       </envs>
       <option name="MAIN_CLASS_NAME" value="main.Application" />
       <module name="chat" />
