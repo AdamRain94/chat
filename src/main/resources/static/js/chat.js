@@ -147,6 +147,7 @@ $(function(){
         send("Текущий браузер не поддерживает WebSocket");
     }
 
+
     webSocket.onopen = function () {
                  consoleLog("WebSocket успешно подключен!")
     }
@@ -161,9 +162,9 @@ $(function(){
          consoleLog("Соединение WebSocket закрыто");
     }
 
-    window.onbeforeunload = function () {
-        closeWebSocket();
-    }
+//    window.onbeforeunload = function () {
+//        closeWebSocket();
+//    }
 
     function closeWebSocket() {
         webSocket.close();

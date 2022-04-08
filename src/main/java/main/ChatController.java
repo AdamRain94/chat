@@ -1,6 +1,5 @@
 package main;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -8,8 +7,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.RequestContextHolder;
 
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Collections;
 import java.util.Date;
@@ -25,11 +22,11 @@ public class ChatController {
     @Autowired
     private MessageRepository messageRepository;
 
-//
-//    @GetMapping("/client")
-//    public ModelAndView client() {
-//        return new ModelAndView("client");
-//    }
+    //
+    //    @GetMapping("/client")
+    //    public ModelAndView client() {
+    //        return new ModelAndView("client");
+    //    }
 
     @GetMapping("/sessionId")
     public String SessionId() {
@@ -95,5 +92,4 @@ public class ChatController {
         users.setOnline(false);
         userRepository.save(users);
     }
-
 }
