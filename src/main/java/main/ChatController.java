@@ -77,6 +77,7 @@ public class ChatController {
 
     @GetMapping("/getMessageById")
     public Message getMessageById(int id) {
+        System.out.println("dddddddddddddddddddddddddddddddddddddddddddddddddddddd- " + messageRepository.findById(id).get().getDateTime());
         return messageRepository.findById(id).get();
     }
 
