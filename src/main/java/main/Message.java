@@ -3,6 +3,7 @@ package main;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 @Entity
 public class Message implements Comparable<Message>  {
@@ -15,7 +16,7 @@ public class Message implements Comparable<Message>  {
     @JoinColumn(name = "user_id", nullable = false)
     private Users users;
 
-    private LocalDateTime dateTime;
+    private ZonedDateTime dateTime;
 
     @Column(length = 999)
     private String message;
@@ -28,11 +29,11 @@ public class Message implements Comparable<Message>  {
         this.id = id;
     }
 
-    public LocalDateTime getDateTime() {
+    public ZonedDateTime getDateTime() {
         return dateTime;
     }
 
-    public void setDateTime(LocalDateTime dateTime) {
+    public void setDateTime(ZonedDateTime dateTime) {
         this.dateTime = dateTime;
     }
 

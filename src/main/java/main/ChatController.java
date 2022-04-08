@@ -57,7 +57,7 @@ public class ChatController {
         String sessionId = RequestContextHolder.currentRequestAttributes().getSessionId();
         Users users = userRepository.findBySessionId(sessionId).get();
         msg.setMessage(message);
-        msg.setDateTime(LocalDateTime.from(ZonedDateTime.now()));
+        msg.setDateTime(ZonedDateTime.now());
         msg.setUsers(users);
         messageRepository.save(msg);
         return msg.getId();
@@ -77,7 +77,6 @@ public class ChatController {
 
     @GetMapping("/getMessageById")
     public Message getMessageById(int id) {
-        System.out.println("dddddddddddddddddddddddddddddddddddddddddddddddddddddd- " + messageRepository.findById(id).get().getDateTime());
         return messageRepository.findById(id).get();
     }
 
