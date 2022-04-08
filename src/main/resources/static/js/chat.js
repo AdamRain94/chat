@@ -158,9 +158,9 @@ $(function(){
          });
     }
 
-    webSocket.onclose = function () {
-         consoleLog("Соединение WebSocket закрыто");
-    }
+//    webSocket.onclose = function () {
+//         consoleLog("Соединение WebSocket закрыто");
+//    }
 
 //    window.onbeforeunload = function () {
 //        closeWebSocket();
