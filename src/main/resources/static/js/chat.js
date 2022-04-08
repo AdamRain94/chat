@@ -14,7 +14,7 @@ $(function(){
     function addOneMessage(message){
 
         let messageDiv = $('<div class="message"></div>');
-        let messageInfo = $('<div class="message-info"><div class="user-name flex"><p class="name" id="' + message.id + '" style="color: rgb(' + message.users.color + '); "><b>' + message.users.name + '</p><p class="time">[' + new Date(message.dateTime).toLocaleTimeString() + ']</p></div></div>');
+        let messageInfo = $('<div class="message-info"><div class="user-name flex"><p class="name" id="' + message.id + '" style="color: rgb(' + message.users.color + '); "><b>' + message.users.name + '</p><p class="time">[' + new Date(new Date(message.dateTime) - (new Date()).getTimezoneOffset()).toLocaleTimeString()+ ']</p></div></div>');
         let messageText = $('<div class="message-text"><p class="text">' + message.message + '</p></div>');
 
         messageDiv.append(messageInfo, messageText);

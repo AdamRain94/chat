@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.RequestContextHolder;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Collections;
 import java.util.Date;
@@ -56,6 +57,7 @@ public class ChatController {
         String sessionId = RequestContextHolder.currentRequestAttributes().getSessionId();
         Users users = userRepository.findBySessionId(sessionId).get();
         msg.setMessage(message);
+        System.out.println(ZoneId.getAvailableZoneIds());
         msg.setDateTime(LocalDateTime.from(ZonedDateTime.now()));
         msg.setUsers(users);
         messageRepository.save(msg);
