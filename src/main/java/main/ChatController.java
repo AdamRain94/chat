@@ -57,7 +57,7 @@ public class ChatController {
         String sessionId = RequestContextHolder.currentRequestAttributes().getSessionId();
         Users users = userRepository.findBySessionId(sessionId).get();
         msg.setMessage(message);
-        msg.setDateTime(LocalDateTime.from(ZonedDateTime.now()));
+        msg.setDateTime(LocalDateTime.now());
         msg.setUsers(users);
         messageRepository.save(msg);
         return msg.getId();
