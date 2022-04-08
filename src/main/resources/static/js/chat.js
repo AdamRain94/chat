@@ -14,9 +14,11 @@ $(function(){
     function addOneMessage(message){
 
         let messageDiv = $('<div class="message"></div>');
-        let messageInfo = $('<div class="message-info"><div class="user-name flex"><p class="name" id="' + message.id + '" style="color: rgb(' + message.users.color + '); "><b>' + message.users.name + '</p><p class="time">[' + new Date(new Date(message.dateTime).getTime() + (60000*(new Date(message.dateTime).getTimezoneOffset() - (new Date().getTimezoneOffset())))).toLocaleTimeString() + ']</p></div></div>');
+        let messageInfo = $('<div class="message-info"><div class="user-name flex"><p class="name" id="' + message.id + '" style="color: rgb(' + message.users.color + '); "><b>' + message.users.name + '</p><p class="time">[' + new Date(new Date(message.dateTime).getTime() + ( 60000* (new Date(message.dateTime).getTimezoneOffset() - (new Date().getTimezoneOffset()) ) ) ).toLocaleTimeString() + ']</p></div></div>');
         let messageText = $('<div class="message-text"><p class="text">' + message.message + '</p></div>');
-                                                                                                                                                                                                                                                               consoleLog(new Date(new Date(message.dateTime).getTime() + (60000*(new Date(message.dateTime).getTimezoneOffset() - (new Date().getTimezoneOffset())))));
+                                                                                                                                                                                                                                                               consoleLog( new Date( new Date(message.dateTime).getTime() - (60000 * (new Date(message.dateTime).getTimezoneOffset() - new Date().getTimezoneOffset()) ) ) );
+                                                                                                                                                                                                                                                               consoleLog((60000*(new Date(message.dateTime).getTimezoneOffset())));
+                                                                                                                                                                                                                                                               consoleLog((new Date(message.dateTime).getTimezoneOffset()));
         messageDiv.append(messageInfo, messageText);
         $('.windows-messages').append(messageDiv);
         $('.windows-messages').scrollTop($('.windows-messages').prop('scrollHeight'));
