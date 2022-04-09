@@ -14,6 +14,10 @@ html {
     box-sizing: inherit;
 }
 
+img {
+    width: 30%;
+}
+
 body {
     margin: 0 auto;
     width: 90vw;
@@ -89,10 +93,9 @@ body {
 }
 
 .windows-input {
-    margin: 0;
     resize: none;
     width: 78%;
-    margin-right: 1vw;
+    margin: 0 1vw 0 0;
     color: white;
     font-size: 1vw;
     border-bottom-left-radius: 1vw;
@@ -100,10 +103,9 @@ body {
 }
 
 .top {
-    margin: auto auto;
     width: 60vw;
     height: 34vw;
-    margin-bottom: 1vw;
+    margin: auto auto 1vw;
 }
 
 .bottom {
@@ -149,8 +151,7 @@ body {
 
 .name {
     position: relative;
-    margin: 0;
-    margin-right: 0.5vw;
+    margin: 0 0.5vw 0 0;
     font-size: 1.1vw;
     letter-spacing: 0.05vw;
     text-shadow: 1vw 0 1vw #000, -1vw 0 1vw #000, 0 -1vw 1vw #000;
@@ -162,10 +163,12 @@ body {
     font-size: 0.9vw;
     text-shadow: 1vw 0 1vw #000, -1vw 0 1vw #000, 0 -1vw 1vw #000;
 }
-p{
+
+p {
     color: white;
     margin: 0;
 }
+
 .text {
     color: white;
     position: relative;
@@ -206,10 +209,8 @@ p{
 }
 
 .input-name {
-    margin: 0 auto;
-    margin-bottom: 1vw;
-    padding: 0;
-    padding-top: 0.7vw;
+    margin: 0 auto 1vw;
+    padding: 0.7vw 0 0;
     text-align: center;
     width: 40vw;
     max-width: 40vw;
@@ -247,26 +248,31 @@ p{
         background-position: center;
         background-repeat: no-repeat;
     }
+
     *,
     *::after,
     *::before {
         box-sizing: inherit;
     }
+
     body {
         margin: 0 auto;
         width: 100%;
         height: 100%;
         font-family: 'font', sans-serif;
     }
+
     .container {
         width: 96%;
         height: 100%;
         margin: auto auto;
         justify-content: center;
     }
+
     .flex {
         display: flex;
     }
+
     .windows {
         margin: auto auto;
         flex-direction: column;
@@ -278,6 +284,7 @@ p{
         color: white;
         text-shadow: 1vw 0 1vw #000, 0 1vw 1vw #000, -1vw 0 1vw #000, 0 -1vw 1vw #000;
     }
+
     .windows-messages,
     .windows-users,
     .windows-input {
@@ -285,6 +292,7 @@ p{
         overflow-y: scroll;
         border: 1px solid black;
     }
+
     .windows-messages,
     .windows-users,
     .windows-input,
@@ -293,15 +301,18 @@ p{
         box-shadow: 1vw 0 1vw #2F4F4F, 0 1vw 1vw #2F4F4F, -1vw 0 1vw #2F4F4F, 0 -1vw 1vw #2F4F4F;
         border: 0.1vw solid #999999;
     }
+
     .windows-input:focus,
     .input-name:focus {
         outline: none;
     }
+
     .windows-messages::-webkit-scrollbar,
     .windows-users::-webkit-scrollbar,
     .windows-input::-webkit-scrollbar {
         display: none;
     }
+
     .windows-messages {
         word-wrap: break-word;
         width: 76%;
@@ -313,34 +324,37 @@ p{
         background-position: center;
         background-repeat: no-repeat;
     }
+
     .windows-users {
         width: 22%;
         height: 100%;
         border-top-right-radius: 1vw;
         background-color: black;
     }
+
     .windows-input {
-        margin: 0;
         resize: none;
         width: 76%;
         height: 100%;
-        margin-right: 1vw;
+        margin: 0 1vw 0 0;
         color: white;
         font-size: 3.2vw;
         border-bottom-left-radius: 1vw;
         background-color: black;
     }
+
     .top {
-        margin: auto auto;
         width: 100%;
         height: 90%;
-        margin-bottom: 1vw;
+        margin: auto auto 1vw;
     }
+
     .bottom {
         margin: auto auto;
         width: 100%;
         height: 10%;
     }
+
     .btn {
         margin: 0;
         padding: 0;
@@ -353,9 +367,10 @@ p{
         border-bottom-right-radius: 1vw;
         background-color: black;
     }
+
     p {
-       color: white;
-       margin: 0;
+        color: white;
+        margin: 0;
     }
 
     .text {
@@ -370,30 +385,36 @@ p{
         flex-direction: row;
         align-items: center;
     }
+
     .message-text {
         margin-left: 3vw;
     }
+
     .user {
         flex-direction: column;
     }
+
     .message {
         margin-bottom: 0.3vw;
     }
+
     .users-name {
         margin-bottom: 0.1vw;
         font-size: 2.2vw;
         letter-spacing: 0.1em;
     }
+
     .name {
-        margin: 0;
-        margin-right: 0.8vw;
+        margin: 0 0.8vw 0 0;
         font-size: 3.5vw;
         letter-spacing: 0.05vw;
     }
+
     .time {
         margin: 0;
         font-size: 2.4vw;
     }
+
     .reg {
         margin: auto auto;
         flex-direction: column;
@@ -403,6 +424,7 @@ p{
         padding: 2vh;
         background-image: none;
     }
+
     .welcome {
         margin: 0;
         padding-bottom: 3%;
@@ -411,6 +433,7 @@ p{
         color: white;
         text-shadow: 0.6vw 0 0.6vw #000, 0 0.6vw 0.6vw #000, -0.6vw 0 0.6vw #000, 0 -0.6vw 0.6vw #000;
     }
+
     .nik-name {
         margin: 0;
         padding-bottom: 3vw;
@@ -419,11 +442,10 @@ p{
         color: white;
         text-shadow: 0.6vw 0 0.6vw #000, 0 0.6vw 0.6vw #000, -0.6vw 0 0.6vw #000, 0 -0.6vw 0.6vw #000;
     }
+
     .input-name {
-        margin: 0 auto;
-        margin-bottom: 8vw;
-        padding: 0;
-        padding-top: 1.4vw;
+        margin: 0 auto 8vw;
+        padding: 1.4vw 0 0;
         text-align: center;
         width: 80vw;
         max-width: 80vw;
@@ -436,6 +458,7 @@ p{
         overflow: hidden;
         resize: none;
     }
+
     .entry {
         margin: 0 auto;
         padding: 0;

@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.time.ZonedDateTime;
 import java.util.Collections;
@@ -22,11 +23,11 @@ public class ChatController {
     @Autowired
     private MessageRepository messageRepository;
 
-    //
-    //    @GetMapping("/client")
-    //    public ModelAndView client() {
-    //        return new ModelAndView("client");
-    //    }
+
+    @GetMapping("/client")
+    public ModelAndView client() {
+        return new ModelAndView("client");
+    }
 
     @GetMapping("/sessionId")
     public String SessionId() {
