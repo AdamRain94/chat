@@ -42,7 +42,11 @@ $(function () {
 
         updateMessage();
         updateUsers();
+        setOnline();
 
+        $(window).focus(function () {
+            setOnline();
+        });
 
         setInterval(function () {
             $.get('/users', {}, function (users) {
@@ -100,9 +104,6 @@ $(function () {
         }
     }
 
-    $(window).focus(function () {
-        setOnline();
-    });
 
     $(document).on('keydown', '.input-name', function (e) {
         if (e.keyCode === 32) {
