@@ -53,10 +53,12 @@ public class ChatController {
     public int message(@RequestParam String message) {
         Message msg = new Message();
         String sessionId = RequestContextHolder.currentRequestAttributes().getSessionId();
-        Users users = userRepository.findBySessionId(sessionId).get();
+        Users user = userRepository.findBySessionId(sessionId).get();
+        user.setOnline(true);
         msg.setMessage(message);
         msg.setDateTime(ZonedDateTime.now());
-        msg.setUsers(users);
+        msg.setUsers(user);
+        setOnline();
         messageRepository.save(msg);
         return msg.getId();
     }

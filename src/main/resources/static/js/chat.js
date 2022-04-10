@@ -8,6 +8,7 @@ $(function () {
             for (let i in response) {
                 addOneMessage(response[i]);
             }
+            $('.windows-messages').scrollTop($('.windows-messages').prop('scrollHeight'));
         });
     }
 
@@ -19,15 +20,13 @@ $(function () {
 
         messageDiv.append(messageInfo, messageText);
         $('.windows-messages').append(messageDiv);
-        $('.windows-messages').scrollTop($('.windows-messages').prop('scrollHeight'));
     }
 
 
     function addMessage() {
-        setOnline();
         if ($('.windows-input').val().length > 0) {
             $.post('/message', {message: nl2br($('.windows-input').val())}, function (messageId) {
-                send(messageId)
+                send(messageId);
             });
         }
         $('.windows-input').val('');
@@ -66,6 +65,7 @@ $(function () {
 
     function addUser(user) {
         $('.user').append('<p class="users-name" id="' + user.id + '" style="color: rgb(' + user.color + ')" >' + user.name + '</p>');
+        // $('#' + user.id).blink(3000);
     }
 
     function deleteUser(userId) {
@@ -86,11 +86,12 @@ $(function () {
     }
 
     $.get('/sessionId', {}, function (response) {
-        if (response) {
+        if (response === true) {
             addWindowsMessage();
         } else {
             let reg = $('<div class="reg flex"><h1 class="welcome">ДОБРО ПОЖАЛОВАТЬ!</h1><h2 class="nik-name">Введите свой никнейм</h2><textarea class="input-name flex" maxlength="12" id="input-name"></textarea><button class="entry" id="entry">ВОЙТИ</button></div>');
             $('.container').append(reg);
+            $('.input-name').focus();
         }
     });
 
@@ -150,6 +151,7 @@ $(function () {
         webSocket.onmessage = function (messageId) {
             $.get('/getMessageById', {id: messageId.data}, function (message) {
                 addOneMessage(message);
+                $('.windows-messages').animate({scrollTop: $('.windows-messages').prop('scrollHeight')}, 900);
             });
         }
 
