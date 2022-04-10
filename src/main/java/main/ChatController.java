@@ -30,12 +30,12 @@ public class ChatController {
     }
 
     @GetMapping("/sessionId")
-    public String SessionId() {
+    public boolean SessionId() {
         String sessionId = RequestContextHolder.currentRequestAttributes().getSessionId();
         Optional<Users> optionalUsers = userRepository.findBySessionId(sessionId);
         if (optionalUsers.isPresent()) {
-            return "yes";
-        } else return "no";
+            return true;
+        } else return false;
     }
 
     @PostMapping("/nikname")

@@ -41,31 +41,27 @@ $(function () {
         let windows = $('<div class="windows flex"><div class="top flex"><div class="windows-messages"></div><div class="windows-users flex"><div class="user flex"></div></div></div><div class="bottom flex"><textarea class="windows-input" id="windows-input" maxlength="999"></textarea><button class="btn" id="btn">ОТПРАВИТЬ</button></div></div>');
         $('.container').append(windows);
 
-        setTimeout(function () {
+        updateMessage();
+        updateUsers();
 
-            updateMessage();
-            updateUsers();
+        $(window).focus(function () {
+            setOnline();
+        });
 
-            $(window).focus(function () {
-                setOnline();
-            });
-
-            setInterval(function () {
-                $.get('/users', {}, function (users) {
-                    for (let i in users) {
-                        if ((new Date().getTime() - users[i].timeOnline > 30000) && users[i].online) {
-                            $.post('/setOffline', {sessionId: users[i].sessionId});
-                            deleteUser(users[i].id);
-                        } else if (users[i].online) {
-                            if ($("#" + users[i].id).length === 0) {
-                                addUser(users[i]);
-                            }
+        setInterval(function () {
+            $.get('/users', {}, function (users) {
+                for (let i in users) {
+                    if ((new Date().getTime() - users[i].timeOnline > 30000)) {
+                        $.post('/setOffline', {sessionId: users[i].sessionId});
+                        deleteUser(users[i].id);
+                    } else {
+                        if ($("#" + users[i].id).length === 0) {
+                            addUser(users[i]);
                         }
                     }
-                });
-            }, 7000);
-
-        }, 1);
+                }
+            });
+        }, 10000);
     }
 
     function addUser(user) {
@@ -90,7 +86,7 @@ $(function () {
     }
 
     $.get('/sessionId', {}, function (response) {
-        if (response === "yes") {
+        if (response) {
             addWindowsMessage();
         } else {
             let reg = $('<div class="reg flex"><h1 class="welcome">ДОБРО ПОЖАЛОВАТЬ!</h1><h2 class="nik-name">Введите свой никнейм</h2><textarea class="input-name flex" maxlength="12" id="input-name"></textarea><button class="entry" id="entry">ВОЙТИ</button></div>');
@@ -100,8 +96,9 @@ $(function () {
 
     function entry() {
         if ($('.input-name').val().length > 0) {
-            $.post('/nikname', {nik: $('.input-name').val()});
-            addWindowsMessage();
+            $.post('/nikname', {nik: $('.input-name').val()}, function (){
+                addWindowsMessage();
+            });
         }
     }
 
@@ -138,23 +135,16 @@ $(function () {
         return text.replace(/(\r\n|\n\r|\r|\n)/g, "<br>");
     }
 
-
-//webSocket для тестирования локально
-//    let  webSocket = new WebSocket('ws://localhost:8080/webSocket');
-
     let webSocket;
 
     if ('WebSocket' in window) {
         openWebSocket();
-    } else {
-        send("Текущий браузер не поддерживает WebSocket");
     }
 
     function openWebSocket() {
         webSocket = new WebSocket('wss://chatik-adamrain-prod.herokuapp.com/webSocket');
 
         webSocket.onopen = function () {
-            consoleLog("WebSocket успешно подключен!");
         }
 
         webSocket.onmessage = function (messageId) {
@@ -164,7 +154,6 @@ $(function () {
         }
 
         webSocket.onclose = function () {
-            consoleLog("Соединение WebSocket закрыто");
             openWebSocket();
         }
     }
