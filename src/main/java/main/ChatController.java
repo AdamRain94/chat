@@ -80,13 +80,19 @@ public class ChatController {
         return messageRepository.findById(id).get();
     }
 
+    @GetMapping("/getUsersById")
+    public Users getUserById(int id) {
+        return userRepository.findById(id).get();
+    }
+
     @GetMapping("/setOnline")
-    public void setOnline() {
+    public int setOnline() {
         String sessionId = RequestContextHolder.currentRequestAttributes().getSessionId();
         Users users = userRepository.findBySessionId(sessionId).get();
         users.setTimeOnline(new Date().getTime());
         users.setOnline(true);
         userRepository.save(users);
+        return users.getId();
     }
 
     @PostMapping("/setOffline")

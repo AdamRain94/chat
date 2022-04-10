@@ -26,7 +26,7 @@ $(function () {
     function addMessage() {
         if ($('.windows-input').val().length > 0) {
             $.post('/message', {message: nl2br($('.windows-input').val())}, function (messageId) {
-                send(messageId);
+                send("msg" + messageId);
             });
         }
         $('.windows-input').val('');
@@ -43,20 +43,13 @@ $(function () {
         updateMessage();
         updateUsers();
 
-        $(window).focus(function () {
-            setOnline();
-        });
 
         setInterval(function () {
             $.get('/users', {}, function (users) {
                 for (let i in users) {
                     if ((new Date().getTime() - users[i].timeOnline > 30000)) {
                         $.post('/setOffline', {sessionId: users[i].sessionId});
-                        deleteUser(users[i].id);
-                    } else {
-                        if ($("#" + users[i].id).length === 0) {
-                            addUser(users[i]);
-                        }
+                        send("del" + users[i].id);
                     }
                 }
             });
@@ -64,7 +57,9 @@ $(function () {
     }
 
     function addUser(user) {
-        $('.user').append('<p class="users-name" id="' + user.id + '" style="color: rgb(' + user.color + ')" >' + user.name + '</p>');
+        if ($("#" + user.id).length === 0) {
+            $('.user').append('<p class="users-name" id="' + user.id + '" style="color: rgb(' + user.color + ')" >' + user.name + '</p>');
+        }
         // $('#' + user.id).blink(3000);
     }
 
@@ -73,7 +68,9 @@ $(function () {
     }
 
     function setOnline() {
-        $.get('/setOnline', {});
+        $.get('/setOnline', {}, function (usersId) {
+            send("add" + usersId);
+        });
     }
 
     function updateUsers() {
@@ -97,12 +94,15 @@ $(function () {
 
     function entry() {
         if ($('.input-name').val().length > 0) {
-            $.post('/nikname', {nik: $('.input-name').val()}, function (){
+            $.post('/nikname', {nik: $('.input-name').val()}, function () {
                 addWindowsMessage();
             });
         }
     }
 
+    $(window).focus(function () {
+        setOnline();
+    });
 
     $(document).on('keydown', '.input-name', function (e) {
         if (e.keyCode === 32) {
@@ -148,11 +148,21 @@ $(function () {
         webSocket.onopen = function () {
         }
 
-        webSocket.onmessage = function (messageId) {
-            $.get('/getMessageById', {id: messageId.data}, function (message) {
-                addOneMessage(message);
-                $('.windows-messages').animate({scrollTop: $('.windows-messages').prop('scrollHeight')}, 900);
-            });
+        webSocket.onmessage = function (id) {
+            consoleLog(id.data);
+            if (id.data.substring(0, 3) === "msg") {
+                $.get('/getMessageById', {id: parseInt(id.data.substring(3))}, function (message) {
+                    addOneMessage(message);
+                    addUser(message.users);
+                    $('.windows-messages').animate({scrollTop: $('.windows-messages').prop('scrollHeight')}, 900);
+                });
+            } else if (id.data.substring(0, 3) === "del") {
+                deleteUser(id.data.substring(3));
+            } else if (id.data.substring(0, 3) === "add") {
+                $.get('/getUsersById', {id: parseInt(id.data.substring(3))}, function (user) {
+                    addUser(user)
+                });
+            }
         }
 
         webSocket.onclose = function () {
