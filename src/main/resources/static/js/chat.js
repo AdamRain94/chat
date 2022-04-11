@@ -25,8 +25,18 @@ $(function () {
 
     function addMessage() {
         if ($('.windows-input').val().length > 0) {
-            $.post('/message', {message: nl2br($('.windows-input').val())}, function (messageId) {
-                send("msg" + messageId);
+            $.post('/message', {message: nl2br($('.windows-input').val())}, function (msg) {
+                let message = {
+                    type: 'message',
+                    id: msg.id,
+                    dateTime: msg.dateTime,
+                    message: msg.message,
+                    users: {
+                        color: msg.users.color,
+                        name: msg.users.name
+                    }
+                }
+                send(JSON.stringify(message));
             });
         }
         $('.windows-input').val('');
@@ -53,7 +63,11 @@ $(function () {
                 for (let i in users) {
                     if ((new Date().getTime() - users[i].timeOnline > 30000)) {
                         $.post('/setOffline', {sessionId: users[i].sessionId});
-                        send("del" + users[i].id);
+                        let userId = {
+                            type: 'delete',
+                            id: users[i].id,
+                        }
+                        send(JSON.stringify(userId));
                     }
                 }
             });
@@ -72,8 +86,14 @@ $(function () {
     }
 
     function setOnline() {
-        $.get('/setOnline', function (usersId) {
-            send("add" + usersId);
+        $.get('/setOnline', function (usr) {
+            let user = {
+                type: 'add',
+                id: usr.id,
+                color: usr.color,
+                name: usr.name
+            }
+            send(JSON.stringify(user));
         });
     }
 
@@ -99,6 +119,7 @@ $(function () {
     function entry() {
         if ($('.input-name').val().length > 0) {
             $.post('/nikname', {nik: $('.input-name').val()}, function () {
+                name = $('.input-name').val();
                 addWindowsMessage();
             });
         }
@@ -149,19 +170,16 @@ $(function () {
         webSocket.onopen = function () {
         }
 
-        webSocket.onmessage = function (id) {
-            if (id.data.substring(0, 3) === "msg") {
-                $.get('/getMessageById/' + id.data.substring(3),  function (message) {
-                    addOneMessage(message);
-                    addUser(message.users);
-                    $('.windows-messages').animate({scrollTop: $('.windows-messages').prop('scrollHeight')}, 900);
-                });
-            } else if (id.data.substring(0, 3) === "del") {
-                deleteUser(id.data.substring(3));
-            } else if (id.data.substring(0, 3) === "add") {
-                $.get('/getUsersById/' + id.data.substring(3), function (user) {
-                    addUser(user)
-                });
+        webSocket.onmessage = function (response) {
+            let object = JSON.parse(response.data);
+            consoleLog(object.type)
+            if (object.type === "message") {
+                addOneMessage(object);
+                $('.windows-messages').animate({scrollTop: $('.windows-messages').prop('scrollHeight')}, 900);
+            } else if (object.type === "delete") {
+                deleteUser(object.id);
+            } else if (object.type === "add") {
+                addUser(object);
             }
         }
 

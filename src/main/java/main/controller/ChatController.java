@@ -5,6 +5,7 @@ import main.model.Message;
 import main.model.Users;
 import main.repositories.MessageRepository;
 import main.repositories.UserRepository;
+import main.web.WebSocket;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -52,7 +53,7 @@ public class ChatController {
     }
 
     @PostMapping("/message")
-    public int message(@RequestParam String message) {
+    public Message message(@RequestParam String message) {
         Message msg = new Message();
         String sessionId = RequestContextHolder.currentRequestAttributes().getSessionId();
         Users user = userRepository.findBySessionId(sessionId).get();
@@ -62,7 +63,9 @@ public class ChatController {
         msg.setUsers(user);
         setOnline();
         messageRepository.save(msg);
-        return msg.getId();
+        WebSocket webSocket = new WebSocket();
+        webSocket.send("Привет");
+        return msg;
     }
 
     @GetMapping("/users")
@@ -88,13 +91,13 @@ public class ChatController {
     }
 
     @GetMapping("/setOnline")
-    public int setOnline() {
+    public Users setOnline() {
         String sessionId = RequestContextHolder.currentRequestAttributes().getSessionId();
         Users users = userRepository.findBySessionId(sessionId).get();
         users.setTimeOnline(new Date().getTime());
         users.setOnline(true);
         userRepository.save(users);
-        return users.getId();
+        return users;
     }
 
     @PostMapping("/setOffline")
