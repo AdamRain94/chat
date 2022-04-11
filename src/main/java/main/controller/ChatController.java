@@ -1,10 +1,12 @@
-package main;
+package main.controller;
 
+import main.model.Color;
+import main.model.Message;
+import main.model.Users;
+import main.repositories.MessageRepository;
+import main.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -75,13 +77,13 @@ public class ChatController {
         return messages;
     }
 
-    @GetMapping("/getMessageById")
-    public Message getMessageById(int id) {
+    @GetMapping("/getMessageById/{id}")
+    public Message getMessageById(@PathVariable int id) {
         return messageRepository.findById(id).get();
     }
 
-    @GetMapping("/getUsersById")
-    public Users getUserById(int id) {
+    @GetMapping("/getUsersById/{id}")
+    public Users getUserById(@PathVariable int id) {
         return userRepository.findById(id).get();
     }
 

@@ -1,4 +1,4 @@
-package main;
+package main.web;
 
 
 import org.springframework.stereotype.Component;

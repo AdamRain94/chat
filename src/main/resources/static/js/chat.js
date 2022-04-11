@@ -4,7 +4,7 @@ $(function () {
 
     function updateMessage() {
         $('.windows-messages').html('');
-        $.get('/getMessage', {}, function (response) {
+        $.get('/getMessage', function (response) {
             for (let i in response) {
                 addOneMessage(response[i]);
             }
@@ -49,7 +49,7 @@ $(function () {
         });
 
         setInterval(function () {
-            $.get('/users', {}, function (users) {
+            $.get('/users', function (users) {
                 for (let i in users) {
                     if ((new Date().getTime() - users[i].timeOnline > 30000)) {
                         $.post('/setOffline', {sessionId: users[i].sessionId});
@@ -72,21 +72,21 @@ $(function () {
     }
 
     function setOnline() {
-        $.get('/setOnline', {}, function (usersId) {
+        $.get('/setOnline', function (usersId) {
             send("add" + usersId);
         });
     }
 
     function updateUsers() {
         $('.user').html('');
-        $.get('/users', {}, function (users) {
+        $.get('/users', function (users) {
             for (let i in users) {
                 addUser(users[i]);
             }
         });
     }
 
-    $.get('/sessionId', {}, function (response) {
+    $.get('/sessionId', function (response) {
         if (response === true) {
             addWindowsMessage();
         } else {
@@ -150,9 +150,8 @@ $(function () {
         }
 
         webSocket.onmessage = function (id) {
-            consoleLog(id.data);
             if (id.data.substring(0, 3) === "msg") {
-                $.get('/getMessageById', {id: parseInt(id.data.substring(3))}, function (message) {
+                $.get('/getMessageById/' + id.data.substring(3),  function (message) {
                     addOneMessage(message);
                     addUser(message.users);
                     $('.windows-messages').animate({scrollTop: $('.windows-messages').prop('scrollHeight')}, 900);
@@ -160,7 +159,7 @@ $(function () {
             } else if (id.data.substring(0, 3) === "del") {
                 deleteUser(id.data.substring(3));
             } else if (id.data.substring(0, 3) === "add") {
-                $.get('/getUsersById', {id: parseInt(id.data.substring(3))}, function (user) {
+                $.get('/getUsersById/' + id.data.substring(3), function (user) {
                     addUser(user)
                 });
             }

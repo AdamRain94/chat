@@ -1,6 +1,7 @@
-package main;
+package main.repositories;
 
 
+import main.model.Users;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
