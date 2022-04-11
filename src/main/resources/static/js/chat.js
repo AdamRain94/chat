@@ -172,7 +172,6 @@ $(function () {
 
         webSocket.onmessage = function (response) {
             let object = JSON.parse(response.data);
-            consoleLog(object.type)
             if (object.type === "message") {
                 addOneMessage(object);
                 $('.windows-messages').animate({scrollTop: $('.windows-messages').prop('scrollHeight')}, 900);
