@@ -70,6 +70,8 @@ $(function () {
                             id: users[i].id,
                         }
                         send(JSON.stringify(userId));
+                    } else {
+                        addUser(users[i]);
                     }
                 }
             });
