@@ -1,5 +1,8 @@
 $(function () {
 
+    let name = null;
+    let color = null;
+
     $('.input-name').focus();
 
     function updateMessage() {
@@ -15,7 +18,7 @@ $(function () {
     function addOneMessage(message) {
 
         let messageDiv = $('<div class="message"></div>');
-        let messageInfo = $('<div class="message-info"><div class="user-name flex"><p class="name" id="' + message.id + '" style="color: rgb(' + message.users.color + '); "><b>' + message.users.name + '</p><p class="time">[' + new Date(message.dateTime).toLocaleTimeString() + ']</p></div></div>');
+        let messageInfo = $('<div class="message-info"><div class="user-name flex"><p class="name" style="color: rgb(' + message.users.color + '); "><b>' + message.users.name + '</p><p class="time">[' + new Date(message.dateTime).toLocaleTimeString() + ']</p></div></div>');
         let messageText = $('<div class="message-text"><p class="text">' + message.message + '</p></div>');
 
         messageDiv.append(messageInfo, messageText);
@@ -25,19 +28,18 @@ $(function () {
 
     function addMessage() {
         if ($('.windows-input').val().length > 0) {
-            $.post('/message', {message: nl2br($('.windows-input').val())}, function (msg) {
-                let message = {
-                    type: 'message',
-                    id: msg.id,
-                    dateTime: msg.dateTime,
-                    message: msg.message,
-                    users: {
-                        color: msg.users.color,
-                        name: msg.users.name
-                    }
+            $.post('/message', {message: nl2br($('.windows-input').val())});
+            let message = {
+                type: 'message',
+                dateTime: new Date().getTime(),
+                message: nl2br($('.windows-input').val()),
+                users: {
+                    color: color,
+                    name: name
                 }
-                send(JSON.stringify(message));
-            });
+            }
+            send(JSON.stringify(message));
+
         }
         $('.windows-input').val('');
         $('.windows-input').focus();
@@ -87,6 +89,8 @@ $(function () {
 
     function setOnline() {
         $.get('/setOnline', function (usr) {
+            color = usr.color;
+            name = usr.name;
             let user = {
                 type: 'add',
                 id: usr.id,
@@ -119,7 +123,6 @@ $(function () {
     function entry() {
         if ($('.input-name').val().length > 0) {
             $.post('/nikname', {nik: $('.input-name').val()}, function () {
-                name = $('.input-name').val();
                 addWindowsMessage();
             });
         }

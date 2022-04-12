@@ -80,16 +80,6 @@ public class ChatController {
         return messages;
     }
 
-    @GetMapping("/getMessageById/{id}")
-    public Message getMessageById(@PathVariable int id) {
-        return messageRepository.findById(id).get();
-    }
-
-    @GetMapping("/getUsersById/{id}")
-    public Users getUserById(@PathVariable int id) {
-        return userRepository.findById(id).get();
-    }
-
     @GetMapping("/setOnline")
     public Users setOnline() {
         String sessionId = RequestContextHolder.currentRequestAttributes().getSessionId();
