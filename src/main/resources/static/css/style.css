@@ -128,11 +128,17 @@ body {
 
 .user-name {
     flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
 }
 
 .message-text {
+    flex-direction: row;
     margin-left: 1.3vw;
+}
+
+g {
+    color: lime;
+    font-weight: 900;
 }
 
 .user {
@@ -170,6 +176,7 @@ p {
 }
 
 .text {
+    flex-direction: row;
     color: white;
     position: relative;
     margin: 0;
@@ -378,6 +385,7 @@ p {
     }
 
     .text {
+        flex-direction: row;
         color: white;
         margin: 0;
         font-size: 3vw;
@@ -391,7 +399,13 @@ p {
     }
 
     .message-text {
+        flex-direction: row;
         margin-left: 3vw;
+    }
+
+    g {
+        color: lime;
+        font-weight: 900;
     }
 
     .user {

@@ -5,7 +5,6 @@ import main.model.Message;
 import main.model.Users;
 import main.repositories.MessageRepository;
 import main.repositories.UserRepository;
-import main.web.WebSocket;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -43,7 +42,6 @@ public class ChatController {
 
     @PostMapping("/nikname")
     public void nikName(@RequestParam String nik) {
-
         Users users = new Users();
         users.setSessionId(RequestContextHolder.currentRequestAttributes().getSessionId());
         users.setName(nik);

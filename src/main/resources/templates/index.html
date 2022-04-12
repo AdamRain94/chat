@@ -14,5 +14,14 @@
 <body>
     <div class="container flex"></div>
 </body>
-
+<script>
+    function addNameInInput(name) {
+        let symbol = "";
+        if($('.windows-input').val().length !== 0){
+            symbol = ", ";
+        }
+        $('.windows-input').val($('.windows-input').val() + symbol + name);
+        $('.windows-input').focus();
+    }
+</script>
 </html>

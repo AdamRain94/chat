@@ -16,10 +16,9 @@ $(function () {
     }
 
     function addOneMessage(message) {
-
         let messageDiv = $('<div class="message"></div>');
-        let messageInfo = $('<div class="message-info"><div class="user-name flex"><p class="name" style="color: rgb(' + message.users.color + '); "><b>' + message.users.name + '</p><p class="time">[' + new Date(message.dateTime).toLocaleTimeString() + ']</p></div></div>');
-        let messageText = $('<div class="message-text"><p class="text">' + message.message + '</p></div>');
+        let messageInfo = $('<div class="message-info"><div class="user-name flex"><p class="name" style="color: rgb(' + message.users.color + '); " onclick="addNameInInput(\'<g style=&quot;color: rgb(' + message.users.color + ')&quot;> ' + message.users.name + '</g>\')"><b>' + message.users.name + '</b></p><p class="time">[' + new Date(message.dateTime).toLocaleTimeString() + ']</p></div></div>');
+        let messageText = $('<div class="message-text flex"><div class="text flex">' + message.message + '</div></div>');
 
         messageDiv.append(messageInfo, messageText);
         $('.windows-messages').append(messageDiv);
@@ -80,9 +79,13 @@ $(function () {
 
     function addUser(user) {
         if ($("#" + user.id).length === 0) {
-            $('.user').append('<p class="users-name" id="' + user.id + '" style="color: rgb(' + user.color + ')" >' + user.name + '</p>');
+            $('.user').append('<p class="users-name" id="' + user.id + '" style="color: rgb(' + user.color + ')" onclick="addNameInInput(\'<g style=&quot;color: rgb(' + user.color + ')&quot;> ' + user.name + '</g>\')" >' + user.name + '</p>');
         }
         // $('#' + user.id).blink(3000);
+    }
+
+    function addNameInInput(name) {
+        $('.windows-input').append(name);
     }
 
     function deleteUser(userId) {
@@ -179,7 +182,7 @@ $(function () {
             let object = JSON.parse(response.data);
             if (object.type === "message") {
                 addOneMessage(object);
-                $('.windows-messages').animate({scrollTop: $('.windows-messages').prop('scrollHeight')}, 900);
+                $('.windows-messages').animate({scrollTop: $('.windows-messages').prop('scrollHeight')}, 700);
             } else if (object.type === "delete") {
                 deleteUser(object.id);
             } else if (object.type === "add") {
