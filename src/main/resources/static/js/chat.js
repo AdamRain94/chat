@@ -17,7 +17,7 @@ $(function () {
 
     function addOneMessage(message) {
         let messageDiv = $('<div class="message"></div>');
-        let messageInfo = $('<div class="message-info"><div class="user-name flex"><p class="name" style="color: rgb(' + message.users.color + '); " onclick="addNameInInput(\'<g style=&quot;color: rgb(' + message.users.color + ')&quot;> ' + message.users.name + '</g>\')"><b>' + message.users.name + '</b></p><p class="time">[' + new Date(message.dateTime).toLocaleTimeString() + ']</p></div></div>');
+        let messageInfo = $('<div class="message-info"><div class="user-name flex"><p class="name" style="color: rgb(' + message.users.color + '); " onclick="addNameInInput(\'<g style=&quot;color: rgb(' + message.users.color + ')&quot;>' + message.users.name + '</g>\')"><b>' + message.users.name + '</b></p><p class="time">[' + new Date(message.dateTime).toLocaleTimeString() + ']</p></div></div>');
         let messageText = $('<div class="message-text flex"><div class="text flex">' + message.message + '</div></div>');
 
         messageDiv.append(messageInfo, messageText);
@@ -79,7 +79,7 @@ $(function () {
 
     function addUser(user) {
         if ($("#" + user.id).length === 0) {
-            $('.user').append('<p class="users-name" id="' + user.id + '" style="color: rgb(' + user.color + ')" onclick="addNameInInput(\'<g style=&quot;color: rgb(' + user.color + ')&quot;> ' + user.name + '</g>\')" >' + user.name + '</p>');
+            $('.user').append('<p class="users-name" id="' + user.id + '" style="color: rgb(' + user.color + ')" onclick="addNameInInput(\'<g style=&quot;color: rgb(' + user.color + ')&quot;>' + user.name + '</g>\')" >' + user.name + '</p>');
         }
         // $('#' + user.id).blink(3000);
     }
