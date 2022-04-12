@@ -60,7 +60,7 @@ $(function () {
             setOnline();
         });
 
-        $(window).on("tap", function () {
+        $('.container').on("tap", function () {
             setOnline();
         });
 
