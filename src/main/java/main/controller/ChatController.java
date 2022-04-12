@@ -63,8 +63,6 @@ public class ChatController {
         msg.setUsers(user);
         setOnline();
         messageRepository.save(msg);
-        WebSocket webSocket = new WebSocket();
-        webSocket.send("Привет");
         return msg;
     }
 
