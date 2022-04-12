@@ -43,6 +43,7 @@ public class ChatController {
 
     @PostMapping("/nikname")
     public void nikName(@RequestParam String nik) {
+
         Users users = new Users();
         users.setSessionId(RequestContextHolder.currentRequestAttributes().getSessionId());
         users.setName(nik);

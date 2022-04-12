@@ -113,7 +113,7 @@ $(function () {
     }
 
     $.get('/sessionId', function (response) {
-        if (response === true) {
+        if (response) {
             addWindowsMessage();
         } else {
             let reg = $('<div class="reg flex"><h1 class="welcome">ДОБРО ПОЖАЛОВАТЬ!</h1><h2 class="nik-name">Введите свой никнейм</h2><textarea class="input-name flex" maxlength="12" id="input-name"></textarea><button class="entry" id="entry">ВОЙТИ</button></div>');

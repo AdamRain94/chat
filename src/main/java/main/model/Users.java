@@ -1,9 +1,6 @@
 package main.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -17,6 +14,7 @@ public class Users {
 
     private String color;
 
+    @Column(unique=true)
     private String sessionId;
 
     private boolean online;
