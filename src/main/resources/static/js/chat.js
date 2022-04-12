@@ -60,10 +60,6 @@ $(function () {
             setOnline();
         });
 
-        $('.container').on("tap", function () {
-            setOnline();
-        });
-
         setInterval(function () {
             $.get('/users', function (users) {
                 for (let i in users) {
