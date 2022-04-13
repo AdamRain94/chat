@@ -392,6 +392,7 @@ p {
         flex-wrap: wrap;
         flex-direction: row;
         color: white;
+        position: relative;
         margin: 0;
         font-size: 3vw;
         align-items: flex-end;
